@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HWBM Chat Skin Test - Luna-Terra Colors</title>
+  <style>
+/* ==========================================
+   HWBM CHAT SKIN - Luna-Terra Palette
+   ========================================== */
+
+/* --- Main Chat Container --- */
+#workskin .hwbm-chat {
+  height: 90vh;
+  max-width: 40em;
+  margin: 0 auto;
+  padding: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  position: relative;
+  background: linear-gradient(to bottom, #25101d 70%, #352527 150%);
+  font-family: Roboto, Futura, 'Trebuchet MS', Arial, sans-serif;
+  line-height: 1.5;
+  box-sizing: border-box;
+}
+
+/* --- Scrollbar (Webkit Only) --- */
+#workskin .hwbm-chat::-webkit-scrollbar { width: 1em; }
+#workskin .hwbm-chat::-webkit-scrollbar-track { background: transparent; }
+#workskin .hwbm-chat::-webkit-scrollbar-thumb { background-color: #FFFAE6; border: none;}
+#workskin .hwbm-chat::-webkit-scrollbar-button { width: 0; height: 0; display: none; }
+
+/* --- Background Image (Sticky) --- */
+#workskin .hwbm-bg {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  height: 90vh;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  z-index: 0;
+}
+
+#workskin .hwbm-bg p {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  line-height: 0;
+}
+
+#workskin .hwbm-bg img {
+  min-width: 100%;
+  min-height: 100%;
+  max-width: none;
+  max-height: none;
+  width: auto;
+  height: auto;
+  margin: 0;
+  padding: 0;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+/* ==========================================
+   PROFILE CARDS
+   ========================================== */
+
+#workskin .profiles-stacked {
+  position: relative;
+  width: 100%;
+  margin-top: -90vh;
+  padding-top: 1.5em;
+  z-index: 1;
+  box-sizing: border-box;
+}
+
+#workskin .profile-right-stacked,
+#workskin .profile-left-stacked {
+  position: relative;
+  display: block;
+  width: 12.5em;
+  z-index: 1;
+}
+
+/* channel closed version*/
+#workskin .profile-left-stacked.closed {
+  opacity: 15%;
+}
+
+#workskin .profile-right-stacked {
+  margin: 1.5em 1.5em 0 auto;
+}
+
+#workskin .profile-left-stacked {
+  margin: 4em auto 0 1.5em;
+}
+
+/* Profile card backgrounds */
+#workskin .profile-right-stacked::before {
+  content: '';
+  position: absolute;
+  top: -1.5em;
+  right: -1.5em;
+  bottom: -1.5em;
+  left: -1.5em;
+  background-color: rgba(25, 11, 19, 0.641);
+  z-index: -1;
+}
+
+#workskin .profile-left-stacked::before {
+  content: '';
+  position: absolute;
+  top: -1.5em;
+  right: -1.5em;
+  bottom: -1.5em;
+  left: -1.5em;
+  background: linear-gradient(to bottom, rgba(25, 11, 19, 0.502) 0%, rgba(25, 11, 19, 0.502) 19.8em, rgba(7, 3, 5, 0.659) 19.8em, rgba(7, 3, 5, 0.659) 100%);
+  z-index: -1;
+}
+
+#workskin .profile-container {
+  width: 12.5em;
+  box-sizing: border-box;
+}
+
+#workskin .profile-container {
+  margin: 0;
+  padding: 0;
+}
+
+#workskin .profile-title p,
+#workskin .profile-name p,
+#workskin .profile-bio p,
+#workskin .profile-image-wrapper p,
+#workskin .profile-spacer p {
+  margin: 0;
+  padding: 0;
+  display: block;
+}
+
+#workskin .profile-title {
+  background-color: #FFFAE6;
+  color: rgba(25, 11, 19, 0.502);
+  font-family: 'Source Code Pro', 'Courier New', Consolas, monospace;
+  font-size: 130%;
+  padding: 0.4em 0.4em 0.4em 1em;
+  padding: 0.5em 0.5em 0.5em 1.2em;
+  line-height: 1;
+  text-align: left;
+  box-sizing: border-box;
+}
+
+#workskin .profile-title.right {
+  color: rgba(25, 11, 19, 0.641);
+}
+
+#workskin .profile-name {
+  background-color: transparent; /* would otherwise be #190B13 */
+  color: #FFFAE6;
+  font-family: Roboto, Futura, 'Trebuchet MS', Arial, sans-serif;
+  font-weight: bold;
+  font-size: 190%; /* Adjust padding inverse-proportionally if you have to change this much - currently it's at 50% of default, but ideally would be 53%*/
+  padding: 0.25em 0.25em 0.4em 0.25em; /* extra padding on bottom to center text vertically without top outline */
+  line-height: 1;
+  text-align: center;
+  box-sizing: border-box;
+  box-shadow: inset -0.15em 0 0 0 #FFFAE6 , /* right */
+    inset 0 -0.15em 0 0 #FFFAE6 , /* bottom */
+    inset 0.15em 0 0 0 #FFFAE6; /* left */
+}
+
+#workskin .profile-name.solo { /* version not below title */
+  padding: 0.25em; /* make padding symmetric*/
+  box-shadow: inset 0 0 0 0.15em #FFFAE6; /* add top border */
+}
+
+#workskin .profile-spacer {
+  height: 0.4em;
+  position: relative;
+}
+
+#workskin .profile-image-wrapper {
+  width: 100%;
+  padding: 0.3em;
+  background-color: #FFFAE6;
+  box-sizing: border-box;
+}
+
+#workskin .profile-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin: 0;
+  padding: 0;
+  background-color: #190B13;
+}
+
+#workskin .profile-image.flip {
+  transform: scaleX(-1);
+}
+
+#workskin .profile-image.cm-to-mf {
+  filter: brightness(360%) hue-rotate(210deg) saturate(75%) brightness(105%);
+}
+
+#workskin .profile-image.cg-to-mf {
+  filter: hue-rotate(56deg) brightness(157%) contrast(150%) saturate(15%) hue-rotate(30deg) brightness(160%);
+}
+
+#workskin .profile-bio {
+  background-color: #FFFAE6;
+  color: #190B13;
+  font-family: 'Source Code Pro', 'Courier New', Consolas, monospace;
+  font-size: 0.9em;
+  line-height: 1.2;
+  text-align: left;
+  box-sizing: border-box;
+  padding: 0.6em;
+}
+
+/* ==========================================
+   CONSOLE
+   Scrollable terminal-style text display.
+   Goes inside a profile box, below the bio.
+   ========================================== */
+
+/* Console container - wider than other profile elements */
+#workskin .profile-console {
+  width: 14.5em;
+  margin-top: 1.5em;
+  margin-left: -0.5em;
+  box-sizing: border-box;
+}
+
+/* Console title row with horizontal line */
+#workskin .console-header {
+  margin: 0;
+  padding: 0;
+  font-family: 'Source Code Pro', 'Courier New', Consolas, monospace;
+  font-size: 0.9em;
+  line-height: 1;
+  color: rgba(255, 250, 230, .6); /* #FFFAE6 60% */
+}
+
+/* Make AO3's auto-added p tag the flex container */
+#workskin .console-header p {
+  display: flex;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  padding-right: 0.5em;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Hide AO3's auto-added br tag */
+#workskin .console-header br {
+  display: none;
+}
+
+/* Console title text */
+#workskin .console-title {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  padding-right: 0.5em;
+  display: inline-block;
+  white-space: nowrap;
+}
+
+/* CRT scanline overlay for title */
+#workskin .console-title::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0.5em;
+  bottom: 0;
+  background: repeating-linear-gradient(to bottom, transparent 0, transparent 0.12em, rgba(25, 11, 19, .8) 0.12em, rgba(25, 11, 19, .8) 0.24em); /*80% opaque so the title is more legible*/
+  z-index: 1;
+}
+
+/* Horizontal line after title */
+#workskin .console-line {
+  display: block;
+  flex-grow: 1;
+  height: 0.1em;
+  min-width: 1em;
+  max-width: 10em;
+  background-color: rgba(255, 250, 230, .6); /* #FFFAE6 60% */
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  text-indent: -9999px;
+  line-height: 0;
+}
+
+/* Scrollable console body - max ~10 lines visible */
+#workskin .console-body {
+  position: relative;
+  margin-top: 0.5em;
+  max-height: 15em;
+  padding-right: 0.5em;
+  overflow-y: auto;
+  overflow-x: hidden;
+  font-family: 'Source Code Pro', 'Courier New', Consolas, monospace;
+  font-size: 0.85em;
+  line-height: 1.5;
+  color: rgba(255, 250, 230, .6); /* #FFFAE6 60% */
+  text-align: left;
+  box-sizing: border-box;
+}
+
+/* CRT scanline overlay - uses negative margin to sit over content */
+#workskin .console-body::after {
+  content: '';
+  display: block;
+  position: sticky;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 15em;
+  margin-top: -15em;
+  background: repeating-linear-gradient(to bottom, transparent 0, transparent 0.12em, #190B13 0.12em, #190B13 0.24em);
+  z-index: 1;
+}
+
+/* Console body scrollbar (Webkit only) */
+#workskin .console-body::-webkit-scrollbar { width: 0.5em; }
+#workskin .console-body::-webkit-scrollbar-track { background: transparent; }
+#workskin .console-body::-webkit-scrollbar-thumb { background-color: #FFFAE6; border: none; }
+
+/* Console text lines */
+#workskin .console-body p {
+  margin: 0;
+  padding: 0.1em 0;
+}
+
+/* ==========================================
+   CHAT MESSAGES
+   ========================================== */
+
+#workskin .chat-container {
+  clear: both;
+  padding: 3.5em 0 1.5em 0;
+  position: relative;
+  z-index: 1;
+  box-sizing: border-box;
+}
+
+#workskin .message {
+  margin: 1.5em 0;
+  padding: 1em 2em;
+  width: 60%;
+  max-width: 22em;
+  position: relative;
+  clear: both;
+  font-family: Roboto, Futura, 'Trebuchet MS', Arial, sans-serif;
+  font-weight: bold;
+  font-size: 1em;
+  box-sizing: border-box;
+}
+
+/* Hide speaker name visually but keep for screen readers */
+#workskin .message dt {
+  position: absolute;
+  left: -10000px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+#workskin .message dd,
+#workskin .message p {
+  margin: 0;
+  padding: 0;
+}
+
+#workskin .message p {
+  display: inline;
+}
+
+/* Right-aligned messages (e.g., Luna-Terra) */
+#workskin .message.right {
+  background-color: #FFFAE6;
+  color: #190B13;
+  float: right;
+  margin-right: 3em;
+  text-align: right;
+  box-shadow: inset 0 0 0 0.15em #FFFAE6;
+}
+
+#workskin .message.right::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 100%;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0 0 1.2em 1.8em;
+  border-color: transparent transparent transparent #FFFAE6;
+}
+
+/* Left-aligned messages (e.g., Europa) */
+#workskin .message.left {
+  background-color: rgba(25, 11, 19, 0.502); /* #190B13 50.2% */
+  color: #FFFAE6;
+  float: left;
+  margin-left: 3em;
+  text-align: left;
+  box-shadow: inset 0 0 0 0.15em #FFFAE6;
+}
+
+#workskin .message.left::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  right: 100%;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0 0 1.2em 1.8em;
+  border-color: transparent transparent #FFFAE6 transparent;
+}
+
+/* Centered system messages (e.g., Channel Closed) */
+#workskin .message.closed {
+  background-color: #FFFAE6;
+  color: rgba(27, 14, 20, .7); /* #1B0E14 60% */
+  font-family: 'Source Code Pro', 'Courier New', Consolas, monospace;
+  font-weight: normal;
+  float: none;
+  width: 22em;
+  max-width: 100%;
+  margin: 2em auto;
+  padding: 0.75em 2em;
+  text-align: center;
+}
+
+#workskin .message.closed::before,
+#workskin .message.closed::after {
+  display: none;
+}
+
+/* ==========================================
+   TYPING INDICATOR
+   ========================================== */
+
+/* Outer container - sticky positioning near bottom */
+#workskin .typing-indicator {
+  position: sticky;
+  bottom: 1.5em;
+  margin-top: 2em;
+  margin-bottom: 1.5em;
+  margin-left: auto;
+  margin-right: 5em;
+  clear: both;
+  z-index: 2;
+  width: 75%;
+  max-width: 22em;
+  min-width: 14em;
+}
+
+/* Reset AO3's auto-added p tags inside typing indicator */
+#workskin .typing-indicator p {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  line-height: 0;
+}
+
+/* Hide AO3's auto-added br tags inside typing indicator */
+#workskin .typing-indicator br {
+  display: none;
+}
+
+/* Inner wrapper for two-section layout */
+#workskin .typing-inner {
+  display: flex;
+  width: 100%;
+}
+
+/* Left section: ellipsis dots area,
+   contains either type of ellipsis 
+*/
+#workskin .typing-ellipsis-box {
+  background-color: rgba(34, 19, 26, 0.897);
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding-top: 1.2em;
+  padding-bottom: 1.2em;
+  padding-left: 1.5em;
+  padding-right: 1.5em;
+  flex-grow: 1;
+  flex-shrink: 1;
+  min-width: 0;
+}
+
+/* Right section: keyboard icon area */
+#workskin .typing-keyboard-box {
+  background-color: rgba(45, 29, 37, 0.897);
+  width: 4em;
+  flex-shrink: 0;
+  flex-grow: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 1.2em;
+  padding-bottom: 1.2em;
+}
+
+/* Received version */
+#workskin .typing-keyboard-box.received {
+  background-color: #FFFAE6;
+  box-shadow: inset 0 0 0 0.25em rgba(45, 29, 37, 0.897);
+}
+
+/* ==========================================
+   Ellipsis and Keyboard (CSS version)
+   ========================================== */
+/* Container for the three dots */
+#workskin .typing-ellipsis-css {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+/* Individual dot styling 
+   Uses a <span> tag with "." text content hidden via text-indent
+   so AO3 doesn't collapse the element.
+   Without CSS, dots appear inline as "..."
+*/
+#workskin .typing-dot {
+  display: block;
+  width: 0.8em;
+  height: 0.8em;
+  margin-top: 0;
+  margin-bottom: 0;
+  margin-left: 0.4em;
+  margin-right: 0.4em;
+  padding: 0;
+  background-color: #FFFAE6;
+  border-radius: 50%;
+  overflow: hidden;
+  text-indent: -9999px;
+  opacity: 0.7;
+  transition-property: opacity;
+  transition-duration: 0.4s;
+  transition-timing-function: ease-in-out;
+}
+
+/* Staggered transition delays for wave effect */
+#workskin .typing-dot.d1 { transition-delay: 0s; }
+#workskin .typing-dot.d2 { transition-delay: 0.15s; }
+#workskin .typing-dot.d3 { transition-delay: 0.3s; }
+
+/* Hover state: dots fade out in sequence */
+#workskin .typing-indicator:hover .typing-dot { opacity: 0.35; }
+#workskin .typing-indicator:hover .typing-dot.d1 { transition-delay: 0s; }
+#workskin .typing-indicator:hover .typing-dot.d2 { transition-delay: 0.15s; }
+#workskin .typing-indicator:hover .typing-dot.d3 { transition-delay: 0.3s; }
+
+/* Keyboard icon: detailed keyboard made with background gradients
+   Colored frame on transparent bg, box color shows as "keys"
+   Uses <span> with hidden text so AO3 doesn't collapse it.
+*/
+#workskin .typing-keyboard-icon-css {
+  display: block;
+  width: 2.5em;
+  height: 1.55em;
+  margin: 0;
+  padding: 0;
+  border-radius: 0.24em 0.24em 0.27em 0.27em;
+  background-color: rgba(0,0,0,0);
+  overflow: hidden;
+  text-indent: -9999px;
+  background-repeat: no-repeat;
+  background-image: linear-gradient(#FFFAE6, #FFFAE6), linear-gradient(#FFFAE6, #FFFAE6), linear-gradient(#FFFAE6, #FFFAE6), linear-gradient(#FFFAE6, #FFFAE6), linear-gradient(#FFFAE6, #FFFAE6), linear-gradient(#FFFAE6, #FFFAE6), linear-gradient(#FFFAE6, #FFFAE6), linear-gradient(#FFFAE6, #FFFAE6), linear-gradient(#FFFAE6, #FFFAE6), linear-gradient(#FFFAE6, #FFFAE6), linear-gradient(#FFFAE6, #FFFAE6), linear-gradient(#FFFAE6, #FFFAE6), linear-gradient(#FFFAE6, #FFFAE6), linear-gradient(#FFFAE6, #FFFAE6), linear-gradient(#FFFAE6, #FFFAE6), linear-gradient(#FFFAE6, #FFFAE6), linear-gradient(#FFFAE6, #FFFAE6), linear-gradient(#FFFAE6, #FFFAE6), linear-gradient(#FFFAE6, #FFFAE6), linear-gradient(#FFFAE6, #FFFAE6), linear-gradient(#FFFAE6, #FFFAE6);
+  background-size: 2.5em 0.29em, 0.29em 0.19em, 0.1em 0.19em, 0.1em 0.19em, 0.1em 0.19em, 0.1em 0.19em, 0.09em 0.19em, 0.1em 0.19em, 0.32em 0.19em, 2.5em 0.19em, 0.38em 0.19em, 0.09em 0.19em, 0.1em 0.19em, 0.1em 0.19em, 0.1em 0.19em, 0.1em 0.19em, 0.51em 0.19em, 2.5em 0.19em, 0.58em 0.19em, 0.59em 0.19em, 2.5em 0.31em;
+  background-position: 0 0, 0 0.29em, 0.48em 0.29em, 0.76em 0.29em, 1.05em 0.29em, 1.33em 0.29em, 1.62em 0.29em, 1.9em 0.29em, 2.18em 0.29em, 0 0.48em, 0 0.67em, 0.57em 0.67em, 0.85em 0.67em, 1.14em 0.67em, 1.42em 0.67em, 1.71em 0.67em, 1.99em 0.67em, 0 0.86em, 0 1.05em, 1.92em 1.05em, 0 1.24em;
+}
+
+/* Received version */
+#workskin .typing-keyboard-icon-css.received {
+  background-image: linear-gradient(rgba(45, 29, 37, 0.897), rgba(45, 29, 37, 0.897)), linear-gradient(rgba(45, 29, 37, 0.897), rgba(45, 29, 37, 0.897)), linear-gradient(rgba(45, 29, 37, 0.897), rgba(45, 29, 37, 0.897)), linear-gradient(rgba(45, 29, 37, 0.897), rgba(45, 29, 37, 0.897)), linear-gradient(rgba(45, 29, 37, 0.897), rgba(45, 29, 37, 0.897)), linear-gradient(rgba(45, 29, 37, 0.897), rgba(45, 29, 37, 0.897)), linear-gradient(rgba(45, 29, 37, 0.897), rgba(45, 29, 37, 0.897)), linear-gradient(rgba(45, 29, 37, 0.897), rgba(45, 29, 37, 0.897)), linear-gradient(rgba(45, 29, 37, 0.897), rgba(45, 29, 37, 0.897)), linear-gradient(rgba(45, 29, 37, 0.897), rgba(45, 29, 37, 0.897)), linear-gradient(rgba(45, 29, 37, 0.897), rgba(45, 29, 37, 0.897)), linear-gradient(rgba(45, 29, 37, 0.897), rgba(45, 29, 37, 0.897)), linear-gradient(rgba(45, 29, 37, 0.897), rgba(45, 29, 37, 0.897)), linear-gradient(rgba(45, 29, 37, 0.897), rgba(45, 29, 37, 0.897)), linear-gradient(rgba(45, 29, 37, 0.897), rgba(45, 29, 37, 0.897)), linear-gradient(rgba(45, 29, 37, 0.897), rgba(45, 29, 37, 0.897)), linear-gradient(rgba(45, 29, 37, 0.897), rgba(45, 29, 37, 0.897)), linear-gradient(rgba(45, 29, 37, 0.897), rgba(45, 29, 37, 0.897)), linear-gradient(rgba(45, 29, 37, 0.897), rgba(45, 29, 37, 0.897)), linear-gradient(rgba(45, 29, 37, 0.897), rgba(45, 29, 37, 0.897)), linear-gradient(rgba(45, 29, 37, 0.897), rgba(45, 29, 37, 0.897));
+}
+
+/* Fallback text - hidden visually with CSS, shown inline without CSS */
+#workskin .typing-fallback {
+  position: absolute;
+  left: -10000px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+/* ==========================================
+   Ellipsis and Keyboard (Image version)
+   Uses filtered external black images
+   ========================================== */
+
+/* Ellipsis image styling */
+#workskin .typing-ellipsis-img {
+  display: block;
+  height: 1em;
+  width: auto;
+  margin: 0;
+  padding: 0;
+  border: none;
+  opacity: 70%;
+  filter: brightness(0) saturate(100%) invert(94%) sepia(76%) saturate(352%) hue-rotate(300deg) brightness(108%) contrast(102%); /*filter for black to #FFFAE6*/
+}
+
+/* Keyboard image styling */
+#workskin .typing-keyboard-img {
+  display: block;
+  width: 2.5em;
+  height: auto;
+  margin: 0 auto;
+  padding: 0;
+  border: none;
+  filter: brightness(0) saturate(100%) invert(94%) sepia(76%) saturate(352%) hue-rotate(300deg) brightness(108%) contrast(102%); /*filter for black to #FFFAE6*/
+}
+
+/* Received version */
+#workskin .typing-keyboard-img.received {
+  filter: brightness(0) saturate(100%) invert(11%) sepia(7%) saturate(2398%) hue-rotate(277deg) brightness(92%) contrast(93%); /*filter for black to #2D1D25*/
+  opacity: 89.7%; /* partially transparent */
+}
+
+  </style>
+</head>
+<body>
+<div id="workskin">
+
+
+<div class="hwbm-chat">
+
+<!-- Background image (sticky, doesn't scroll) -->
+<div class="hwbm-bg">
+  <p><img src="https://images.squidge.org/images/2025/11/24/luna-terra_bg.png" alt="Background image of stars"></p>
+</div>
+
+<!-- Profile cards section -->
+<div class="profiles-stacked">
+
+  <!-- RIGHT PROFILE: Luna-Terra -->
+  <div class="profile-right-stacked">
+    <div class="profile-container">
+      <div class="profile-title right"><p>PILOT</p></div> </br> <!-- test -->
+      <div class="profile-name"><p>LUNA-TERRA</p></div> </br> <!-- test -->
+      <div class="profile-name solo"><p>LUNA-TERRA</p></div> </br> <!-- test -->
+      
+      <div class="profile-title right"><p>PILOT</p></div>
+      <div class="profile-name"><p>LUNA-TERRA</p></div>
+      <div class="profile-spacer"></div>
+      <div class="profile-image-wrapper">
+        <p><img src="https://static.wikia.nocookie.net/hwbm/images/2/21/LunaTerraIcon.png" alt="Luna-Terra Icon" class="profile-image"></p>
+        <p><img src="https://static.wikia.nocookie.net/hwbm/images/4/42/SaturnIcon.png" alt="Saturn Icon" class="profile-image cm-to-mf"></p>
+        <p><img src="https://static.wikia.nocookie.net/hwbm/images/e/e3/PlutoIcon.png" alt="Pluto Icon" class="profile-image cg-to-mf"></p>
+      </div>
+      <div class="profile-bio"><p>Pilot First Class. Don't send me messages.</p></div>
+      
+      <!-- Console: scrollable terminal-style text -->
+      <div class="profile-console">
+        <div class="console-header">
+          <p><span class="console-title">CONSOLE</span><span class="console-line"> </span></p>
+        </div>
+        
+        <div class="console-body">
+          <p>...pilot vital readings fluctuating</p>
+          <p>...potential gravity well: automatic reroute plotted</p>
+          <p>...beginning component re-enumeration</p>
+          <p>...spurious disconnect of component id [0x3242:0x4212:RIGHT AMMO POD]</p>
+          <p>...Pthread support ABORTS when sync kernel primitives misused</p>
+          <p>...coffee maker process: completed (exit status: 0)</p>
+          <p>...subspace NTP jitter corrected (delta: -118ns)</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- LEFT PROFILE: Europa -->
+  <div class="profile-left-stacked">
+    <div class="profile-container">
+      <div class="profile-title"><p>COMMAND</p></div>
+      <div class="profile-name"><p>EUROPA</p></div>
+      <div class="profile-spacer"></div>
+      <div class="profile-image-wrapper">
+        <p><img src="https://static.wikia.nocookie.net/hwbm/images/9/9f/EuropaIcon.png" alt="Europa Icon" class="profile-image"></p>
+      </div>
+      <div class="profile-bio"><p>Director of Combat Operations, Memorial Foundation Existential Safety. Not your mom.</p></div>
+    </div>
+  </div>
+
+  <!-- LEFT PROFILE: Europa, channel closed version  -->
+  <div class="profile-left-stacked closed">
+    <div class="profile-container">
+      <div class="profile-title"><p>COMMAND</p></div>
+      <div class="profile-name"><p>EUROPA</p></div>
+      <div class="profile-spacer"></div>
+      <div class="profile-image-wrapper">
+        <p><img src="https://static.wikia.nocookie.net/hwbm/images/9/9f/EuropaIcon.png" alt="Europa Icon" class="profile-image"></p>
+      </div>
+      <div class="profile-bio"><p>Director of Combat Operations, Memorial Foundation Existential Safety. Not your mom.</p></div>
+    </div>
+  </div>
+
+</div>
+
+<!-- Chat messages container -->
+<div class="chat-container">
+
+  <dl class="message right">
+    <dt>Luna-Terra</dt>
+    <dd>Test message from Luna-Terra</dd>
+  </dl>
+
+  <dl class="message left">
+    <dt>Europa</dt>
+    <dd>Test message from Europa</dd>
+  </dl>
+
+  <dl class="message right">
+    <dt>Luna-Terra</dt>
+    <dd>A longer test message from Luna-Terra, to make sure it handles longer message rectangles correctly.</dd>
+  </dl>
+
+  <dl class="message left">
+    <dt>Europa</dt>
+    <dd>And a longer test message from Europa, going a few lines to make sure we can test chat scrolling behavior.</dd>
+  </dl>
+
+  <dl class="message right">
+    <dt>Luna-Terra</dt>
+    <dd>Another message to add more scrollable content.</dd>
+  </dl>
+
+  <dl class="message left">
+    <dt>Europa</dt>
+    <dd>Indeed, let's make sure there's enough to scroll.</dd>
+  </dl>
+
+  <dl class="message right">
+    <dt>Luna-Terra</dt>
+    <dd>One more for good measure.</dd>
+  </dl>
+  
+  <!-- CHANNEL CLOSED -->
+  <dl class="message closed">
+    <dt>System</dt>
+    <dd>Channel Closed</dd>
+  </dl>
+
+  <!-- TYPING INDICATOR (CSS VERSION)  -->
+  <div class="typing-indicator" role="status" aria-label="Typing">
+    <div class="typing-inner">
+      <div class="typing-ellipsis-box">
+        
+        <div class="typing-ellipsis-css" aria-hidden="true">
+          <!-- Dots as spans, no whitespace between them so they form "..." without CSS -->
+          <span class="typing-dot d1">.</span><span class="typing-dot d2">.</span><span class="typing-dot d3">.</span>
+        </div>
+        <!-- Fallback text flows after dots - hidden with CSS, visible without -->
+        <span class="typing-fallback"> Someone is typing</span>
+        
+      </div>
+      
+      <div class="typing-keyboard-box" aria-hidden="true">
+        <span class="typing-keyboard-icon-css">&nbsp;</span>
+      </div>
+      
+    </div>
+  </div>
+
+  <!-- TYPING INDICATOR (IMAGE VERSION)  -->
+  <div class="typing-indicator" role="status" aria-label="Typing">
+    <div class="typing-inner">
+      <div class="typing-ellipsis-box">
+        
+        <p aria-hidden="true"><img class="typing-ellipsis-img" src="https://images.squidge.org/images/2025/12/14/ellipsis_animation.png" alt="ellipsis animation"></p>
+        <span class="typing-fallback">... Someone is typing</span>
+        
+      </div>
+      
+      <div class="typing-keyboard-box" aria-hidden="true">
+        <p><img class="typing-keyboard-img" src="https://images.squidge.org/images/2025/12/01/chatkeyboard.png" alt="keyboard image"></p>
+      </div>
+      
+    </div>
+  </div>
+
+  <!-- RECEIVED INDICATOR (CSS VERSION)  -->
+  <div class="typing-indicator" role="status" aria-label="Typing">
+    <div class="typing-inner">
+      <div class="typing-ellipsis-box"></div>
+      
+      <div class="typing-keyboard-box received" aria-hidden="true">
+        <span class="typing-keyboard-icon-css received">&nbsp;</span>
+      </div>
+      
+    </div>
+  </div>
+
+  <!-- RECEIVED INDICATOR (IMAGE VERSION)  -->
+  <div class="typing-indicator" role="status" aria-label="Typing">
+    <div class="typing-inner">
+      <div class="typing-ellipsis-box"></div>
+      
+      <div class="typing-keyboard-box received" aria-hidden="true">
+        <p><img class="typing-keyboard-img received" src="https://images.squidge.org/images/2025/12/01/chatkeyboard.png" alt="keyboard image"></p>
+      </div>
+      
+    </div>
+  </div>
+
+</div>
+
+</div>
+
+
+</div>
+</body>
+</html>
