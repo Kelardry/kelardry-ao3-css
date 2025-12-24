@@ -1,0 +1,1361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HWBM Chat Skin - Combined Palettes</title>
+  <style>
+/* ==========================================
+   HWBM CHAT SKIN - Combined Palettes
+   
+   Palette classes: .cm (Saturn/Celestial Mechanics),
+   .cg (Pluto/Cradle's Graces), .mf (Luna-Terra/Memorial Foundation)
+   
+   Apply palette classes directly to elements, not just the container.
+   This allows mixing palettes (e.g., an MF message in a CM chat).
+   ========================================== */
+
+/* ==========================================
+   MAIN CHAT CONTAINER
+   ========================================== */
+
+#workskin .hwbm-chat {
+  height: 90vh;
+  max-width: 40em;
+  margin: 0 auto;
+  padding: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  position: relative;
+  font-family: Roboto, Futura, 'Trebuchet MS', Arial, sans-serif;
+  line-height: 1.5;
+  box-sizing: border-box;
+}
+
+/* --- Palette-specific container backgrounds --- */
+#workskin .hwbm-chat.cm { background: linear-gradient(to bottom, #7b818a 70%, #91949c); }
+#workskin .hwbm-chat.cg { background: linear-gradient(to bottom, #650a12 70%, #421e2b 200%); }
+#workskin .hwbm-chat.mf { background: linear-gradient(to bottom, #25101d 70%, #352527 150%); }
+
+/* --- Scrollbar (Webkit Only) --- */
+#workskin .hwbm-chat::-webkit-scrollbar { width: 1em; }
+#workskin .hwbm-chat::-webkit-scrollbar-track { background: transparent; }
+#workskin .hwbm-chat::-webkit-scrollbar-button { width: 0; height: 0; display: none; }
+
+/* Palette-specific scrollbar thumb */
+#workskin .hwbm-chat.cm::-webkit-scrollbar-thumb { background-color: #EAE6E1; border: none; }
+#workskin .hwbm-chat.cg::-webkit-scrollbar-thumb { background-color: #FFFFFF; border: none; }
+#workskin .hwbm-chat.mf::-webkit-scrollbar-thumb { background-color: #FFFAE6; border: none; }
+
+/* ==========================================
+   BACKGROUND IMAGE (Sticky)
+   ========================================== */
+
+#workskin .hwbm-bg {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  height: 90vh;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  z-index: 0;
+}
+
+#workskin .hwbm-bg p {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  line-height: 0;
+}
+
+#workskin .hwbm-bg img {
+  min-width: 100%;
+  min-height: 100%;
+  max-width: none;
+  max-height: none;
+  width: auto;
+  height: auto;
+  margin: 0;
+  padding: 0;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+/* ==========================================
+   PROFILE CARDS
+   ========================================== */
+
+#workskin .profiles-stacked {
+  position: relative;
+  width: 100%;
+  margin-top: -90vh;
+  padding-top: 1.5em;
+  z-index: 1;
+  box-sizing: border-box;
+}
+
+#workskin .profile-right-stacked,
+#workskin .profile-left-stacked {
+  position: relative;
+  display: block;
+  width: 12.5em;
+  z-index: 1;
+}
+
+/* Channel closed version */
+#workskin .profile-left-stacked.closed {
+  opacity: 15%;
+}
+
+#workskin .profile-right-stacked {
+  margin: 1.5em 1.5em 0 auto;
+}
+
+#workskin .profile-left-stacked {
+  margin: 4em auto 0 1.5em;
+}
+
+/* Profile card backgrounds - right */
+#workskin .profile-right-stacked::before {
+  content: '';
+  position: absolute;
+  top: -1.5em;
+  right: -1.5em;
+  bottom: -1.5em;
+  left: -1.5em;
+  z-index: -1;
+}
+
+#workskin .profile-right-stacked.cm::before { background-color: #333E50; }
+#workskin .profile-right-stacked.cg::before { background-color: #330F33; }
+#workskin .profile-right-stacked.mf::before { background-color: rgba(25, 11, 19, 0.641); }
+
+/* Profile card backgrounds - left */
+#workskin .profile-left-stacked::before {
+  content: '';
+  position: absolute;
+  top: -1.5em;
+  right: -1.5em;
+  bottom: -1.5em;
+  left: -1.5em;
+  z-index: -1;
+}
+
+#workskin .profile-left-stacked.cm::before { background: linear-gradient(to bottom, #4A5564 0%, #4A5564 19.8em, #333E50 19.8em, #333E50 100%); }
+#workskin .profile-left-stacked.cg::before { background: linear-gradient(to bottom, rgba(51, 15, 51, 0.502) 0%, rgba(51, 15, 51, 0.502) 19.8em, #3A1021 19.8em, #3A1021 100%); }
+#workskin .profile-left-stacked.mf::before { background: linear-gradient(to bottom, rgba(25, 11, 19, 0.502) 0%, rgba(25, 11, 19, 0.502) 19.8em, rgba(7, 3, 5, 0.659) 19.8em, rgba(7, 3, 5, 0.659) 100%); }
+
+#workskin .profile-container {
+  width: 12.5em;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+#workskin .profile-title p,
+#workskin .profile-name p,
+#workskin .profile-bio p,
+#workskin .profile-image-wrapper p,
+#workskin .profile-spacer p {
+  margin: 0;
+  padding: 0;
+  display: block;
+}
+
+/* --- Profile Title --- */
+#workskin .profile-title {
+  font-family: 'Source Code Pro', 'Courier New', Consolas, monospace;
+  font-size: 130%;
+  padding: 0.4em 0.4em 0.4em 1em;
+  line-height: 1;
+  text-align: left;
+  box-sizing: border-box;
+}
+
+#workskin .profile-title.cm { background-color: #EAE6E1; color: #4A5564; }
+#workskin .profile-title.cg { background-color: #FF2231; color: #3A1021; }
+#workskin .profile-title.mf { background-color: #FFFAE6; color: rgba(25, 11, 19, 0.502); }
+
+#workskin .profile-title.cm.right { color: #333E50; }
+#workskin .profile-title.cg.right { color: #330F33; }
+#workskin .profile-title.mf.right { color: rgba(25, 11, 19, 0.641); }
+
+/* --- Profile Name --- */
+#workskin .profile-name {
+  background-color: transparent;
+  font-family: Roboto, Futura, 'Trebuchet MS', Arial, sans-serif;
+  font-weight: bold;
+  font-size: 190%;
+  padding: 0.25em 0.25em 0.4em 0.25em;
+  line-height: 1;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+#workskin .profile-name.cm {
+  color: #EAE6E1;
+  box-shadow: inset -0.15em 0 0 0 #EAE6E1, inset 0 -0.15em 0 0 #EAE6E1, inset 0.15em 0 0 0 #EAE6E1;
+}
+#workskin .profile-name.cg {
+  color: #FFFFFF;
+  box-shadow: inset -0.15em 0 0 0 #FF2231, inset 0 -0.15em 0 0 #FF2231, inset 0.15em 0 0 0 #FF2231;
+}
+#workskin .profile-name.mf {
+  color: #FFFAE6;
+  box-shadow: inset -0.15em 0 0 0 #FFFAE6, inset 0 -0.15em 0 0 #FFFAE6, inset 0.15em 0 0 0 #FFFAE6;
+}
+
+/* Version not below title */
+#workskin .profile-name.solo {
+  padding: 0.25em;
+}
+
+#workskin .profile-name.solo.cm { box-shadow: inset 0 0 0 0.15em #EAE6E1; }
+#workskin .profile-name.solo.cg { box-shadow: inset 0 0 0 0.15em #FF2231; }
+#workskin .profile-name.solo.mf { box-shadow: inset 0 0 0 0.15em #FFFAE6; }
+
+/* --- Profile Spacer --- */
+#workskin .profile-spacer {
+  height: 0.4em;
+  position: relative;
+}
+
+/* --- Profile Image Wrapper --- */
+#workskin .profile-image-wrapper {
+  width: 100%;
+  padding: 0.3em;
+  box-sizing: border-box;
+}
+
+#workskin .profile-image-wrapper.cm { background-color: #EAE6E1; }
+#workskin .profile-image-wrapper.cg { background-color: #FF2231; }
+#workskin .profile-image-wrapper.mf { background-color: #FFFAE6; }
+
+/* --- Profile Image --- */
+#workskin .profile-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin: 0;
+  padding: 0;
+}
+
+#workskin .profile-image.cm { background-color: #333E50; }
+#workskin .profile-image.cg { background-color: #330F33; }
+#workskin .profile-image.mf { background-color: #190B13; }
+
+#workskin .profile-image.flip {
+  transform: scaleX(-1);
+}
+
+/* --- Icon Color Filter Classes (all 6) --- */
+/* For adapting character icons from one route's colors to another */
+
+/* Saturn (CM) palette filters */
+#workskin .profile-image.cg-to-cm { filter: sepia(100%) hue-rotate(180deg) saturate(130%) brightness(60%); }
+#workskin .profile-image.mf-to-cm { filter: sepia(10%) brightness(26%) hue-rotate(165deg) saturate(185%); }
+
+/* Pluto (CG) palette filters */
+#workskin .profile-image.cm-to-cg { filter: brightness(70%) sepia(100%) hue-rotate(300deg) saturate(700%) brightness(115%); }
+#workskin .profile-image.mf-to-cg { filter: brightness(35%) sepia(100%) hue-rotate(307deg) saturate(700%) brightness(90%); }
+
+/* Luna-Terra (MF) palette filters */
+#workskin .profile-image.cm-to-mf { filter: brightness(360%) hue-rotate(210deg) saturate(75%) brightness(105%); }
+#workskin .profile-image.cg-to-mf { filter: hue-rotate(56deg) brightness(157%) contrast(150%) saturate(15%) hue-rotate(30deg) brightness(160%); }
+
+/* --- Profile Bio --- */
+#workskin .profile-bio {
+  font-family: 'Source Code Pro', 'Courier New', Consolas, monospace;
+  font-size: 0.9em;
+  line-height: 1.2;
+  text-align: left;
+  box-sizing: border-box;
+  padding: 0.6em;
+}
+
+#workskin .profile-bio.cm { background-color: #EAE6E1; color: #4A5564; }
+#workskin .profile-bio.cg { background-color: #FF2231; color: #330F33; }
+#workskin .profile-bio.mf { background-color: #FFFAE6; color: #190B13; }
+
+/* ==========================================
+   CONSOLE
+   Scrollable terminal-style text display.
+   Goes inside a profile box, below the bio.
+   ========================================== */
+
+/* Console container - wider than other profile elements */
+#workskin .profile-console {
+  width: 14.5em;
+  margin-top: 1.5em;
+  margin-left: -0.5em;
+  box-sizing: border-box;
+}
+
+/* Console title row with horizontal line */
+#workskin .console-header {
+  margin: 0;
+  padding: 0;
+  font-family: 'Source Code Pro', 'Courier New', Consolas, monospace;
+  font-size: 0.9em;
+  line-height: 1;
+}
+
+#workskin .console-header.cm { color: rgba(234, 230, 225, .6); }
+#workskin .console-header.cg { color: rgba(255, 34, 49, .6); }
+#workskin .console-header.mf { color: rgba(255, 250, 230, .6); }
+
+/* Make AO3's auto-added p tag the flex container */
+#workskin .console-header p {
+  display: flex;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  padding-right: 0.5em;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Hide AO3's auto-added br tag */
+#workskin .console-header br {
+  display: none;
+}
+
+/* Console title text */
+#workskin .console-title {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  padding-right: 0.5em;
+  display: inline-block;
+  white-space: nowrap;
+}
+
+/* CRT scanline overlay for title - 80% opaque so the title is more legible */
+#workskin .console-title::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0.5em;
+  bottom: 0;
+  z-index: 1;
+}
+
+#workskin .console-header.cm .console-title::after { background: repeating-linear-gradient(to bottom, transparent 0, transparent 0.12em, rgba(50, 62, 80, .8) 0.12em, rgba(50, 62, 80, .8) 0.24em); }
+#workskin .console-header.cg .console-title::after { background: repeating-linear-gradient(to bottom, transparent 0, transparent 0.12em, rgba(51, 15, 51, .8) 0.12em, rgba(51, 15, 51, .8) 0.24em); }
+#workskin .console-header.mf .console-title::after { background: repeating-linear-gradient(to bottom, transparent 0, transparent 0.12em, rgba(25, 11, 19, .8) 0.12em, rgba(25, 11, 19, .8) 0.24em); }
+
+/* Horizontal line after title */
+#workskin .console-line {
+  display: block;
+  flex-grow: 1;
+  height: 0.1em;
+  min-width: 1em;
+  max-width: 10em;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  text-indent: -9999px;
+  line-height: 0;
+}
+
+#workskin .console-header.cm .console-line { background-color: rgba(234, 230, 225, .6); }
+#workskin .console-header.cg .console-line { background-color: rgba(255, 34, 49, .6); }
+#workskin .console-header.mf .console-line { background-color: rgba(255, 250, 230, .6); }
+
+/* Scrollable console body - max ~10 lines visible */
+#workskin .console-body {
+  position: relative;
+  margin-top: 0.5em;
+  max-height: 15em;
+  padding-right: 0.5em;
+  overflow-y: auto;
+  overflow-x: hidden;
+  font-family: 'Source Code Pro', 'Courier New', Consolas, monospace;
+  font-size: 0.85em;
+  line-height: 1.5;
+  text-align: left;
+  box-sizing: border-box;
+}
+
+#workskin .console-body.cm { color: rgba(234, 230, 225, .6); }
+#workskin .console-body.cg { color: rgba(255, 34, 49, .6); }
+#workskin .console-body.mf { color: rgba(255, 250, 230, .6); }
+
+/* CRT scanline overlay - uses negative margin to sit over content */
+#workskin .console-body::after {
+  content: '';
+  display: block;
+  position: sticky;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 15em;
+  margin-top: -15em;
+  z-index: 1;
+}
+
+#workskin .console-body.cm::after { background: repeating-linear-gradient(to bottom, transparent 0, transparent 0.12em, rgba(50, 62, 80, 1) 0.12em, rgba(50, 62, 80, 1) 0.24em); }
+#workskin .console-body.cg::after { background: repeating-linear-gradient(to bottom, transparent 0, transparent 0.12em, #330F33 0.12em, #330F33 0.24em); }
+#workskin .console-body.mf::after { background: repeating-linear-gradient(to bottom, transparent 0, transparent 0.12em, #190B13 0.12em, #190B13 0.24em); }
+
+/* Console body scrollbar (Webkit only) */
+#workskin .console-body::-webkit-scrollbar { width: 0.5em; }
+#workskin .console-body::-webkit-scrollbar-track { background: transparent; }
+
+#workskin .console-body.cm::-webkit-scrollbar-thumb { background-color: #EAE6E1; border: none; }
+#workskin .console-body.cg::-webkit-scrollbar-thumb { background-color: #FFFFFF; border: none; }
+#workskin .console-body.mf::-webkit-scrollbar-thumb { background-color: #FFFAE6; border: none; }
+
+/* Console text lines */
+#workskin .console-body p {
+  margin: 0;
+  padding: 0.1em 0;
+}
+
+/* ==========================================
+   CHAT MESSAGES
+   ========================================== */
+
+#workskin .chat-container {
+  clear: both;
+  padding: 3.5em 0 1.5em 0;
+  position: relative;
+  z-index: 1;
+  box-sizing: border-box;
+}
+
+#workskin .message {
+  margin: 1.5em 0;
+  padding: 1em 2em;
+  width: 60%;
+  max-width: 22em;
+  position: relative;
+  clear: both;
+  font-family: Roboto, Futura, 'Trebuchet MS', Arial, sans-serif;
+  font-weight: bold;
+  font-size: 1em;
+  box-sizing: border-box;
+}
+
+/* Hide speaker name visually but keep for screen readers */
+#workskin .message dt {
+  position: absolute;
+  left: -10000px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+#workskin .message dd,
+#workskin .message p {
+  margin: 0;
+  padding: 0;
+}
+
+#workskin .message p {
+  display: inline;
+}
+
+/* --- Right-aligned messages (protagonist) --- */
+#workskin .message.right {
+  float: right;
+  margin-right: 3em;
+  text-align: right;
+}
+
+#workskin .message.right.cm {
+  background-color: #EAE6E1;
+  color: #404B5C;
+  box-shadow: inset 0 0 0 0.15em #EAE6E1;
+}
+#workskin .message.right.cg {
+  background-color: #FF2231;
+  color: #3A1021;
+  box-shadow: inset 0 0 0 0.15em #FF2231;
+}
+#workskin .message.right.mf {
+  background-color: #FFFAE6;
+  color: #190B13;
+  box-shadow: inset 0 0 0 0.15em #FFFAE6;
+}
+
+#workskin .message.right::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 100%;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0 0 1.2em 1.8em;
+}
+
+#workskin .message.right.cm::after { border-color: transparent transparent transparent #EAE6E1; }
+#workskin .message.right.cg::after { border-color: transparent transparent transparent #FF2231; }
+#workskin .message.right.mf::after { border-color: transparent transparent transparent #FFFAE6; }
+
+/* --- Left-aligned messages (other character) --- */
+#workskin .message.left {
+  float: left;
+  margin-left: 3em;
+  text-align: left;
+}
+
+#workskin .message.left.cm {
+  background-color: rgba(74, 85, 100, 0.475);
+  color: #EAE6E1;
+  box-shadow: inset 0 0 0 0.15em #EAE6E1;
+}
+#workskin .message.left.cg {
+  background-color: rgba(66, 31, 44, 0.671);
+  color: #FFFFFF;
+  box-shadow: inset 0 0 0 0.15em #FF2231;
+}
+#workskin .message.left.mf {
+  background-color: rgba(25, 11, 19, 0.502);
+  color: #FFFAE6;
+  box-shadow: inset 0 0 0 0.15em #FFFAE6;
+}
+
+#workskin .message.left::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  right: 100%;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0 0 1.2em 1.8em;
+}
+
+#workskin .message.left.cm::before { border-color: transparent transparent #EAE6E1 transparent; }
+#workskin .message.left.cg::before { border-color: transparent transparent #FF2231 transparent; }
+#workskin .message.left.mf::before { border-color: transparent transparent #FFFAE6 transparent; }
+
+/* --- Centered system messages (e.g., Channel Closed) --- */
+#workskin .message.closed {
+  font-family: 'Source Code Pro', 'Courier New', Consolas, monospace;
+  font-weight: normal;
+  float: none;
+  width: 22em;
+  max-width: 100%;
+  margin: 2em auto;
+  padding: 0.75em 2em;
+  text-align: center;
+}
+
+#workskin .message.closed.cm {
+  background-color: #333E50;
+  color: rgba(234, 230, 225, .6);
+}
+#workskin .message.closed.cg {
+  background-color: #FF2231;
+  color: rgba(58, 16, 33, .6);
+}
+#workskin .message.closed.mf {
+  background-color: #FFFAE6;
+  color: rgba(27, 14, 20, .7);
+}
+
+#workskin .message.closed::before,
+#workskin .message.closed::after {
+  display: none;
+}
+
+/* ==========================================
+   TYPING INDICATOR
+   ========================================== */
+
+/* Outer container - sticky positioning near bottom */
+#workskin .typing-indicator {
+  position: sticky;
+  bottom: 1.5em;
+  margin-top: 2em;
+  margin-bottom: 1.5em;
+  margin-left: auto;
+  margin-right: 5em;
+  clear: both;
+  z-index: 2;
+  width: 75%;
+  max-width: 22em;
+  min-width: 14em;
+}
+
+/* Reset AO3's auto-added p tags inside typing indicator */
+#workskin .typing-indicator p {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  line-height: 0;
+}
+
+/* Hide AO3's auto-added br tags inside typing indicator */
+#workskin .typing-indicator br {
+  display: none;
+}
+
+/* Inner wrapper for two-section layout */
+#workskin .typing-inner {
+  display: flex;
+  width: 100%;
+}
+
+/* Left section: ellipsis dots area */
+#workskin .typing-ellipsis-box {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding-top: 1.2em;
+  padding-bottom: 1.2em;
+  padding-left: 1.5em;
+  padding-right: 1.5em;
+  flex-grow: 1;
+  flex-shrink: 1;
+  min-width: 0;
+}
+
+#workskin .typing-ellipsis-box.cm { background-color: #333E50; }
+#workskin .typing-ellipsis-box.cg { background-color: #FF2231; }
+#workskin .typing-ellipsis-box.mf { background-color: rgba(34, 19, 26, 0.897); }
+
+/* Right section: keyboard icon area */
+#workskin .typing-keyboard-box {
+  width: 4em;
+  flex-shrink: 0;
+  flex-grow: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 1.2em;
+  padding-bottom: 1.2em;
+}
+
+#workskin .typing-keyboard-box.cm { background-color: #4A5564; }
+#workskin .typing-keyboard-box.cg { background-color: #7E1B2A; }
+#workskin .typing-keyboard-box.mf { background-color: rgba(45, 29, 37, 0.897); }
+
+/* Received version */
+#workskin .typing-keyboard-box.received.cm {
+  background-color: #EAE6E1;
+  box-shadow: inset 0 0 0 0.25em #4A5564;
+}
+#workskin .typing-keyboard-box.received.cg {
+  background-color: #FF2231;
+  box-shadow: inset 0 0 0 0.25em #7E1B2A;
+}
+#workskin .typing-keyboard-box.received.mf {
+  background-color: #FFFAE6;
+  box-shadow: inset 0 0 0 0.25em rgba(45, 29, 37, 0.897);
+}
+
+/* ==========================================
+   Ellipsis and Keyboard (CSS version)
+   ========================================== */
+
+/* Container for the three dots */
+#workskin .typing-ellipsis-css {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+/* Individual dot styling 
+   Uses a <span> tag with "." text content hidden via text-indent
+   so AO3 doesn't collapse the element.
+   Without CSS, dots appear inline as "..."
+*/
+#workskin .typing-dot {
+  display: block;
+  width: 0.8em;
+  height: 0.8em;
+  margin-top: 0;
+  margin-bottom: 0;
+  margin-left: 0.4em;
+  margin-right: 0.4em;
+  padding: 0;
+  border-radius: 50%;
+  overflow: hidden;
+  text-indent: -9999px;
+  opacity: 0.7;
+  transition-property: opacity;
+  transition-duration: 0.4s;
+  transition-timing-function: ease-in-out;
+}
+
+#workskin .typing-dot.cm { background-color: #EAE6E1; }
+#workskin .typing-dot.cg { background-color: #7E1B2A; }
+#workskin .typing-dot.mf { background-color: #FFFAE6; }
+
+/* Staggered transition delays for wave effect */
+#workskin .typing-dot.d1 { transition-delay: 0s; }
+#workskin .typing-dot.d2 { transition-delay: 0.15s; }
+#workskin .typing-dot.d3 { transition-delay: 0.3s; }
+
+/* Hover state: dots fade out in sequence */
+#workskin .typing-indicator:hover .typing-dot { opacity: 0.35; }
+#workskin .typing-indicator:hover .typing-dot.d1 { transition-delay: 0s; }
+#workskin .typing-indicator:hover .typing-dot.d2 { transition-delay: 0.15s; }
+#workskin .typing-indicator:hover .typing-dot.d3 { transition-delay: 0.3s; }
+
+/* Keyboard icon: detailed keyboard made with background gradients
+   Colored frame on transparent bg, box color shows as "keys"
+   Uses <span> with hidden text so AO3 doesn't collapse it.
+*/
+#workskin .typing-keyboard-icon-css {
+  display: block;
+  width: 2.5em;
+  height: 1.55em;
+  margin: 0;
+  padding: 0;
+  border-radius: 0.24em 0.24em 0.27em 0.27em;
+  background-color: rgba(0,0,0,0);
+  overflow: hidden;
+  text-indent: -9999px;
+  background-repeat: no-repeat;
+  background-size: 2.5em 0.29em, 0.29em 0.19em, 0.1em 0.19em, 0.1em 0.19em, 0.1em 0.19em, 0.1em 0.19em, 0.09em 0.19em, 0.1em 0.19em, 0.32em 0.19em, 2.5em 0.19em, 0.38em 0.19em, 0.09em 0.19em, 0.1em 0.19em, 0.1em 0.19em, 0.1em 0.19em, 0.1em 0.19em, 0.51em 0.19em, 2.5em 0.19em, 0.58em 0.19em, 0.59em 0.19em, 2.5em 0.31em;
+  background-position: 0 0, 0 0.29em, 0.48em 0.29em, 0.76em 0.29em, 1.05em 0.29em, 1.33em 0.29em, 1.62em 0.29em, 1.9em 0.29em, 2.18em 0.29em, 0 0.48em, 0 0.67em, 0.57em 0.67em, 0.85em 0.67em, 1.14em 0.67em, 1.42em 0.67em, 1.71em 0.67em, 1.99em 0.67em, 0 0.86em, 0 1.05em, 1.92em 1.05em, 0 1.24em;
+}
+
+#workskin .typing-keyboard-icon-css.cm { background-image: linear-gradient(#EAE6E1, #EAE6E1), linear-gradient(#EAE6E1, #EAE6E1), linear-gradient(#EAE6E1, #EAE6E1), linear-gradient(#EAE6E1, #EAE6E1), linear-gradient(#EAE6E1, #EAE6E1), linear-gradient(#EAE6E1, #EAE6E1), linear-gradient(#EAE6E1, #EAE6E1), linear-gradient(#EAE6E1, #EAE6E1), linear-gradient(#EAE6E1, #EAE6E1), linear-gradient(#EAE6E1, #EAE6E1), linear-gradient(#EAE6E1, #EAE6E1), linear-gradient(#EAE6E1, #EAE6E1), linear-gradient(#EAE6E1, #EAE6E1), linear-gradient(#EAE6E1, #EAE6E1), linear-gradient(#EAE6E1, #EAE6E1), linear-gradient(#EAE6E1, #EAE6E1), linear-gradient(#EAE6E1, #EAE6E1), linear-gradient(#EAE6E1, #EAE6E1), linear-gradient(#EAE6E1, #EAE6E1), linear-gradient(#EAE6E1, #EAE6E1), linear-gradient(#EAE6E1, #EAE6E1); }
+#workskin .typing-keyboard-icon-css.cg { background-image: linear-gradient(#FF2231, #FF2231), linear-gradient(#FF2231, #FF2231), linear-gradient(#FF2231, #FF2231), linear-gradient(#FF2231, #FF2231), linear-gradient(#FF2231, #FF2231), linear-gradient(#FF2231, #FF2231), linear-gradient(#FF2231, #FF2231), linear-gradient(#FF2231, #FF2231), linear-gradient(#FF2231, #FF2231), linear-gradient(#FF2231, #FF2231), linear-gradient(#FF2231, #FF2231), linear-gradient(#FF2231, #FF2231), linear-gradient(#FF2231, #FF2231), linear-gradient(#FF2231, #FF2231), linear-gradient(#FF2231, #FF2231), linear-gradient(#FF2231, #FF2231), linear-gradient(#FF2231, #FF2231), linear-gradient(#FF2231, #FF2231), linear-gradient(#FF2231, #FF2231), linear-gradient(#FF2231, #FF2231), linear-gradient(#FF2231, #FF2231); }
+#workskin .typing-keyboard-icon-css.mf { background-image: linear-gradient(#FFFAE6, #FFFAE6), linear-gradient(#FFFAE6, #FFFAE6), linear-gradient(#FFFAE6, #FFFAE6), linear-gradient(#FFFAE6, #FFFAE6), linear-gradient(#FFFAE6, #FFFAE6), linear-gradient(#FFFAE6, #FFFAE6), linear-gradient(#FFFAE6, #FFFAE6), linear-gradient(#FFFAE6, #FFFAE6), linear-gradient(#FFFAE6, #FFFAE6), linear-gradient(#FFFAE6, #FFFAE6), linear-gradient(#FFFAE6, #FFFAE6), linear-gradient(#FFFAE6, #FFFAE6), linear-gradient(#FFFAE6, #FFFAE6), linear-gradient(#FFFAE6, #FFFAE6), linear-gradient(#FFFAE6, #FFFAE6), linear-gradient(#FFFAE6, #FFFAE6), linear-gradient(#FFFAE6, #FFFAE6), linear-gradient(#FFFAE6, #FFFAE6), linear-gradient(#FFFAE6, #FFFAE6), linear-gradient(#FFFAE6, #FFFAE6), linear-gradient(#FFFAE6, #FFFAE6); }
+
+/* Received version */
+#workskin .typing-keyboard-icon-css.received.cm { background-image: linear-gradient(#4A5564, #4A5564), linear-gradient(#4A5564, #4A5564), linear-gradient(#4A5564, #4A5564), linear-gradient(#4A5564, #4A5564), linear-gradient(#4A5564, #4A5564), linear-gradient(#4A5564, #4A5564), linear-gradient(#4A5564, #4A5564), linear-gradient(#4A5564, #4A5564), linear-gradient(#4A5564, #4A5564), linear-gradient(#4A5564, #4A5564), linear-gradient(#4A5564, #4A5564), linear-gradient(#4A5564, #4A5564), linear-gradient(#4A5564, #4A5564), linear-gradient(#4A5564, #4A5564), linear-gradient(#4A5564, #4A5564), linear-gradient(#4A5564, #4A5564), linear-gradient(#4A5564, #4A5564), linear-gradient(#4A5564, #4A5564), linear-gradient(#4A5564, #4A5564), linear-gradient(#4A5564, #4A5564), linear-gradient(#4A5564, #4A5564); }
+#workskin .typing-keyboard-icon-css.received.cg { background-image: linear-gradient(#7E1B2A, #7E1B2A), linear-gradient(#7E1B2A, #7E1B2A), linear-gradient(#7E1B2A, #7E1B2A), linear-gradient(#7E1B2A, #7E1B2A), linear-gradient(#7E1B2A, #7E1B2A), linear-gradient(#7E1B2A, #7E1B2A), linear-gradient(#7E1B2A, #7E1B2A), linear-gradient(#7E1B2A, #7E1B2A), linear-gradient(#7E1B2A, #7E1B2A), linear-gradient(#7E1B2A, #7E1B2A), linear-gradient(#7E1B2A, #7E1B2A), linear-gradient(#7E1B2A, #7E1B2A), linear-gradient(#7E1B2A, #7E1B2A), linear-gradient(#7E1B2A, #7E1B2A), linear-gradient(#7E1B2A, #7E1B2A), linear-gradient(#7E1B2A, #7E1B2A), linear-gradient(#7E1B2A, #7E1B2A), linear-gradient(#7E1B2A, #7E1B2A), linear-gradient(#7E1B2A, #7E1B2A), linear-gradient(#7E1B2A, #7E1B2A), linear-gradient(#7E1B2A, #7E1B2A); }
+#workskin .typing-keyboard-icon-css.received.mf { background-image: linear-gradient(rgba(45, 29, 37, 0.897), rgba(45, 29, 37, 0.897)), linear-gradient(rgba(45, 29, 37, 0.897), rgba(45, 29, 37, 0.897)), linear-gradient(rgba(45, 29, 37, 0.897), rgba(45, 29, 37, 0.897)), linear-gradient(rgba(45, 29, 37, 0.897), rgba(45, 29, 37, 0.897)), linear-gradient(rgba(45, 29, 37, 0.897), rgba(45, 29, 37, 0.897)), linear-gradient(rgba(45, 29, 37, 0.897), rgba(45, 29, 37, 0.897)), linear-gradient(rgba(45, 29, 37, 0.897), rgba(45, 29, 37, 0.897)), linear-gradient(rgba(45, 29, 37, 0.897), rgba(45, 29, 37, 0.897)), linear-gradient(rgba(45, 29, 37, 0.897), rgba(45, 29, 37, 0.897)), linear-gradient(rgba(45, 29, 37, 0.897), rgba(45, 29, 37, 0.897)), linear-gradient(rgba(45, 29, 37, 0.897), rgba(45, 29, 37, 0.897)), linear-gradient(rgba(45, 29, 37, 0.897), rgba(45, 29, 37, 0.897)), linear-gradient(rgba(45, 29, 37, 0.897), rgba(45, 29, 37, 0.897)), linear-gradient(rgba(45, 29, 37, 0.897), rgba(45, 29, 37, 0.897)), linear-gradient(rgba(45, 29, 37, 0.897), rgba(45, 29, 37, 0.897)), linear-gradient(rgba(45, 29, 37, 0.897), rgba(45, 29, 37, 0.897)), linear-gradient(rgba(45, 29, 37, 0.897), rgba(45, 29, 37, 0.897)), linear-gradient(rgba(45, 29, 37, 0.897), rgba(45, 29, 37, 0.897)), linear-gradient(rgba(45, 29, 37, 0.897), rgba(45, 29, 37, 0.897)), linear-gradient(rgba(45, 29, 37, 0.897), rgba(45, 29, 37, 0.897)), linear-gradient(rgba(45, 29, 37, 0.897), rgba(45, 29, 37, 0.897)); }
+
+/* Fallback text - hidden visually with CSS, shown inline without CSS */
+#workskin .typing-fallback {
+  position: absolute;
+  left: -10000px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+/* ==========================================
+   Ellipsis and Keyboard (Image version)
+   Uses filtered external black images
+   ========================================== */
+
+/* Ellipsis image styling */
+#workskin .typing-ellipsis-img {
+  display: block;
+  height: 1em;
+  width: auto;
+  margin: 0;
+  padding: 0;
+  border: none;
+  opacity: 70%;
+}
+
+/* Filter for black to palette accent */
+#workskin .typing-ellipsis-img.cm { filter: brightness(0) saturate(100%) invert(98%) sepia(59%) saturate(136%) hue-rotate(307deg) brightness(95%) contrast(92%); }
+#workskin .typing-ellipsis-img.cg { filter: brightness(0) saturate(100%) invert(14%) sepia(31%) saturate(5785%) hue-rotate(333deg) brightness(88%) contrast(94%); }
+#workskin .typing-ellipsis-img.mf { filter: brightness(0) saturate(100%) invert(94%) sepia(76%) saturate(352%) hue-rotate(300deg) brightness(108%) contrast(102%); }
+
+/* Keyboard image styling */
+#workskin .typing-keyboard-img {
+  display: block;
+  width: 2.5em;
+  height: auto;
+  margin: 0 auto;
+  padding: 0;
+  border: none;
+}
+
+/* Filter for black to palette accent */
+#workskin .typing-keyboard-img.cm { filter: brightness(0) saturate(100%) invert(98%) sepia(59%) saturate(136%) hue-rotate(307deg) brightness(95%) contrast(92%); }
+#workskin .typing-keyboard-img.cg { filter: brightness(0) saturate(100%) invert(24%) sepia(44%) saturate(7162%) hue-rotate(345deg) brightness(103%) contrast(101%); }
+#workskin .typing-keyboard-img.mf { filter: brightness(0) saturate(100%) invert(94%) sepia(76%) saturate(352%) hue-rotate(300deg) brightness(108%) contrast(102%); }
+
+/* Received version */
+#workskin .typing-keyboard-img.received.cm { filter: brightness(0) saturate(100%) invert(31%) sepia(14%) saturate(644%) hue-rotate(178deg) brightness(95%) contrast(88%); }
+#workskin .typing-keyboard-img.received.cg { filter: brightness(0) saturate(100%) invert(14%) sepia(31%) saturate(5785%) hue-rotate(333deg) brightness(88%) contrast(94%); }
+#workskin .typing-keyboard-img.received.mf { filter: brightness(0) saturate(100%) invert(11%) sepia(7%) saturate(2398%) hue-rotate(277deg) brightness(92%) contrast(93%); }
+
+  </style>
+</head>
+<body>
+<div id="workskin">
+
+
+<!-- ==========================================
+     SATURN / CELESTIAL MECHANICS (.cm)
+     ========================================== -->
+
+<div class="hwbm-chat cm">
+
+<!-- Background image (sticky, doesn't scroll) -->
+<div class="hwbm-bg">
+  <p><img src="https://vignette.wikia.nocookie.net/hwbm/images/0/08/Site-background-dark/revision/latest?cb=20210719165414.png" alt="Background image of stars"></p>
+</div>
+
+<!-- Profile cards section -->
+<div class="profiles-stacked">
+
+  <!-- RIGHT PROFILE: Saturn -->
+  <div class="profile-right-stacked cm">
+    <div class="profile-container">
+      <div class="profile-title right cm"><p>PILOT</p></div> </br> <!-- test -->
+      <div class="profile-name cm"><p>SATURN</p></div> </br> <!-- test -->
+      <div class="profile-name solo cm"><p>SATURN</p></div> </br> <!-- test -->
+      
+      <div class="profile-title right cm"><p>PILOT</p></div>
+      <div class="profile-name cm"><p>SATURN</p></div>
+      <div class="profile-spacer"></div>
+      <div class="profile-image-wrapper cm">
+        <p><img src="https://static.wikia.nocookie.net/hwbm/images/4/42/SaturnIcon.png" alt="Saturn Icon" class="profile-image cm"></p>
+        <p><img src="https://static.wikia.nocookie.net/hwbm/images/e/e3/PlutoIcon.png" alt="Pluto Icon" class="profile-image cm cg-to-cm"></p>
+        <p><img src="https://static.wikia.nocookie.net/hwbm/images/2/21/LunaTerraIcon.png" alt="Luna-Terra Icon" class="profile-image cm mf-to-cm"></p>
+      </div>
+      <div class="profile-bio cm"><p>Insufferable horror creature. Forward all complaints to Mercury.</p></div>
+      
+      <!-- Console: scrollable terminal-style text -->
+      <div class="profile-console">
+        <div class="console-header cm">
+          <p><span class="console-title">CONSOLE</span><span class="console-line"> </span></p>
+        </div>
+        
+        <div class="console-body cm">
+          <p>...pilot vital readings fluctuating</p>
+          <p>...potential gravity well: automatic reroute plotted</p>
+          <p>...beginning component re-enumeration</p>
+          <p>...spurious disconnect of component id [0x3242:0x4212:RIGHT AMMO POD]</p>
+          <p>...Pthread support ABORTS when sync kernel primitives misused</p>
+          <p>...coffee maker process: completed (exit status: 0)</p>
+          <p>...subspace NTP jitter corrected (delta: -118ns)</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- LEFT PROFILE: Mercury -->
+  <div class="profile-left-stacked cm">
+    <div class="profile-container">
+      <div class="profile-title cm"><p>BRIDGE</p></div>
+      <div class="profile-name cm"><p>MERCURY</p></div>
+      <div class="profile-spacer"></div>
+      <div class="profile-image-wrapper cm">
+        <p><img src="https://static.wikia.nocookie.net/hwbm/images/f/f9/MercuryIcon.png" alt="Mercury Icon" class="profile-image cm"></p>
+      </div>
+      <div class="profile-bio cm"><p>A boy in space on purpose. Consummate bridge bunny. Not responsible for Saturn.</p></div>
+    </div>
+  </div>
+
+  <!-- LEFT PROFILE: Mercury, channel closed version -->
+  <div class="profile-left-stacked closed cm">
+    <div class="profile-container">
+      <div class="profile-title cm"><p>BRIDGE</p></div>
+      <div class="profile-name cm"><p>MERCURY</p></div>
+      <div class="profile-spacer"></div>
+      <div class="profile-image-wrapper cm">
+        <p><img src="https://static.wikia.nocookie.net/hwbm/images/f/f9/MercuryIcon.png" alt="Mercury Icon" class="profile-image cm"></p>
+      </div>
+      <div class="profile-bio cm"><p>A boy in space on purpose. Consummate bridge bunny. Not responsible for Saturn.</p></div>
+    </div>
+  </div>
+
+</div>
+
+<!-- Chat messages container -->
+<div class="chat-container">
+
+  <dl class="message right cm">
+    <dt>Saturn</dt>
+    <dd>Test message from Saturn</dd>
+  </dl>
+
+  <dl class="message left cm">
+    <dt>Mercury</dt>
+    <dd>Test message from Mercury</dd>
+  </dl>
+
+  <dl class="message right cm">
+    <dt>Saturn</dt>
+    <dd>A longer test message from Saturn, to make sure it handles longer message rectangles correctly.</dd>
+  </dl>
+
+  <dl class="message left cm">
+    <dt>Mercury</dt>
+    <dd>And a longer test message from Mercury, going a few lines to make sure we can test chat scrolling behavior.</dd>
+  </dl>
+
+  <dl class="message right cm">
+    <dt>Saturn</dt>
+    <dd>Another message to add more scrollable content.</dd>
+  </dl>
+
+  <dl class="message left cm">
+    <dt>Mercury</dt>
+    <dd>Indeed, let's make sure there's enough to scroll.</dd>
+  </dl>
+
+  <dl class="message right cm">
+    <dt>Saturn</dt>
+    <dd>One more for good measure.</dd>
+  </dl>
+  
+  <!-- CHANNEL CLOSED -->
+  <dl class="message closed cm">
+    <dt>System</dt>
+    <dd>Channel Closed</dd>
+  </dl>
+
+  <!-- TYPING INDICATOR (CSS VERSION)  -->
+  <div class="typing-indicator" role="status" aria-label="Typing">
+    <div class="typing-inner">
+      <div class="typing-ellipsis-box cm">
+        
+        <div class="typing-ellipsis-css" aria-hidden="true">
+          <!-- Dots as spans, no whitespace between them so they form "..." without CSS -->
+          <span class="typing-dot d1 cm">.</span><span class="typing-dot d2 cm">.</span><span class="typing-dot d3 cm">.</span>
+        </div>
+        <!-- Fallback text flows after dots - hidden with CSS, visible without -->
+        <span class="typing-fallback"> Someone is typing</span>
+        
+      </div>
+      
+      <div class="typing-keyboard-box cm" aria-hidden="true">
+        <span class="typing-keyboard-icon-css cm">&nbsp;</span>
+      </div>
+      
+    </div>
+  </div>
+
+  <!-- TYPING INDICATOR (IMAGE VERSION)  -->
+  <div class="typing-indicator" role="status" aria-label="Typing">
+    <div class="typing-inner">
+      <div class="typing-ellipsis-box cm">
+        
+        <p aria-hidden="true"><img class="typing-ellipsis-img cm" src="https://images.squidge.org/images/2025/12/14/ellipsis_animation.png" alt="ellipsis animation"></p>
+        <span class="typing-fallback">... Someone is typing</span>
+        
+      </div>
+      
+      <div class="typing-keyboard-box cm" aria-hidden="true">
+        <p><img class="typing-keyboard-img cm" src="https://images.squidge.org/images/2025/12/01/chatkeyboard.png" alt="keyboard image"></p>
+      </div>
+      
+    </div>
+  </div>
+
+  <!-- RECEIVED INDICATOR (CSS VERSION)  -->
+  <div class="typing-indicator" role="status" aria-label="Typing">
+    <div class="typing-inner">
+      <div class="typing-ellipsis-box cm"></div>
+      
+      <div class="typing-keyboard-box received cm" aria-hidden="true">
+        <span class="typing-keyboard-icon-css received cm">&nbsp;</span>
+      </div>
+      
+    </div>
+  </div>
+
+  <!-- RECEIVED INDICATOR (IMAGE VERSION)  -->
+  <div class="typing-indicator" role="status" aria-label="Typing">
+    <div class="typing-inner">
+      <div class="typing-ellipsis-box cm"></div>
+      
+      <div class="typing-keyboard-box received cm" aria-hidden="true">
+        <p><img class="typing-keyboard-img received cm" src="https://images.squidge.org/images/2025/12/01/chatkeyboard.png" alt="keyboard image"></p>
+      </div>
+      
+    </div>
+  </div>
+
+</div>
+
+</div>
+</br> <!-- break to have a divider between them -->
+
+
+<!-- ==========================================
+     PLUTO / CRADLE'S GRACES (.cg)
+     ========================================== -->
+
+<div class="hwbm-chat cg">
+
+<!-- Background image (sticky, doesn't scroll) -->
+<div class="hwbm-bg">
+  <p><img src="https://images.squidge.org/images/2025/11/24/pluto_bg.png" alt="Background image of stars"></p>
+</div>
+
+<!-- Profile cards section -->
+<div class="profiles-stacked">
+
+  <!-- RIGHT PROFILE: Pluto -->
+  <div class="profile-right-stacked cg">
+    <div class="profile-container">
+      <div class="profile-title right cg"><p>PILOT</p></div> </br> <!-- test -->
+      <div class="profile-name cg"><p>PLUTO</p></div> </br> <!-- test -->
+      <div class="profile-name solo cg"><p>PLUTO</p></div> </br> <!-- test -->
+      
+      <div class="profile-title right cg"><p>PILOT</p></div>
+      <div class="profile-name cg"><p>PLUTO</p></div>
+      <div class="profile-spacer"></div>
+      <div class="profile-image-wrapper cg">
+        <p><img src="https://static.wikia.nocookie.net/hwbm/images/e/e3/PlutoIcon.png" alt="Pluto Icon" class="profile-image cg"></p>
+        <p><img src="https://static.wikia.nocookie.net/hwbm/images/4/42/SaturnIcon.png" alt="Saturn Icon" class="profile-image cg cm-to-cg"></p>
+        <p><img src="https://static.wikia.nocookie.net/hwbm/images/2/21/LunaTerraIcon.png" alt="Luna-Terra Icon" class="profile-image cg mf-to-cg"></p>
+      </div>
+      <div class="profile-bio cg"><p>I'm thankful for my Cradle's Graces, but we're not coming back.</p></div>
+      
+      <!-- Console: scrollable terminal-style text -->
+      <div class="profile-console">
+        <div class="console-header cg">
+          <p><span class="console-title">CONSOLE</span><span class="console-line"> </span></p>
+        </div>
+        
+        <div class="console-body cg">
+          <p>...pilot vital readings fluctuating</p>
+          <p>...potential gravity well: automatic reroute plotted</p>
+          <p>...beginning component re-enumeration</p>
+          <p>...spurious disconnect of component id [0x3242:0x4212:RIGHT AMMO POD]</p>
+          <p>...Pthread support ABORTS when sync kernel primitives misused</p>
+          <p>...coffee maker process: completed (exit status: 0)</p>
+          <p>...subspace NTP jitter corrected (delta: -118ns)</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- LEFT PROFILE: Mars -->
+  <div class="profile-left-stacked cg">
+    <div class="profile-container">
+      <div class="profile-title cg"><p>PILOT</p></div>
+      <div class="profile-name cg"><p>MARS</p></div>
+      <div class="profile-spacer"></div>
+      <div class="profile-image-wrapper cg">
+        <p><img src="https://static.wikia.nocookie.net/hwbm/images/7/71/MarsIcon.jpg" alt="Mars Icon" class="profile-image cg"></p>
+      </div>
+      <div class="profile-bio cg"><p>Generation 2 Pilot, First Class. DMs open for fight requests.</p></div>
+    </div>
+  </div>
+
+  <!-- LEFT PROFILE: Mars, channel closed version  -->
+  <div class="profile-left-stacked closed cg">
+    <div class="profile-container">
+      <div class="profile-title cg"><p>PILOT</p></div>
+      <div class="profile-name cg"><p>MARS</p></div>
+      <div class="profile-spacer"></div>
+      <div class="profile-image-wrapper cg">
+        <p><img src="https://static.wikia.nocookie.net/hwbm/images/7/71/MarsIcon.jpg" alt="Mars Icon" class="profile-image cg"></p>
+      </div>
+      <div class="profile-bio cg"><p>Generation 2 Pilot, First Class. DMs open for fight requests.</p></div>
+    </div>
+  </div>
+
+</div>
+
+<!-- Chat messages container -->
+<div class="chat-container">
+
+  <dl class="message right cg">
+    <dt>Pluto</dt>
+    <dd>Test message from Pluto</dd>
+  </dl>
+
+  <dl class="message left cg">
+    <dt>Mars</dt>
+    <dd>Test message from Mars</dd>
+  </dl>
+
+  <dl class="message right cg">
+    <dt>Pluto</dt>
+    <dd>A longer test message from Pluto, to make sure it handles longer message rectangles correctly.</dd>
+  </dl>
+
+  <dl class="message left cg">
+    <dt>Mars</dt>
+    <dd>And a longer test message from Mars, going a few lines to make sure we can test chat scrolling behavior.</dd>
+  </dl>
+
+  <dl class="message right cg">
+    <dt>Pluto</dt>
+    <dd>Another message to add more scrollable content.</dd>
+  </dl>
+
+  <dl class="message left cg">
+    <dt>Mars</dt>
+    <dd>Indeed, let's make sure there's enough to scroll.</dd>
+  </dl>
+
+  <dl class="message right cg">
+    <dt>Pluto</dt>
+    <dd>One more for good measure.</dd>
+  </dl>
+  
+  <!-- CHANNEL CLOSED -->
+  <dl class="message closed cg">
+    <dt>System</dt>
+    <dd>Channel Closed</dd>
+  </dl>
+
+  <!-- TYPING INDICATOR (CSS VERSION)  -->
+  <div class="typing-indicator" role="status" aria-label="Typing">
+    <div class="typing-inner">
+      <div class="typing-ellipsis-box cg">
+        
+        <div class="typing-ellipsis-css" aria-hidden="true">
+          <!-- Dots as spans, no whitespace between them so they form "..." without CSS -->
+          <span class="typing-dot d1 cg">.</span><span class="typing-dot d2 cg">.</span><span class="typing-dot d3 cg">.</span>
+        </div>
+        <!-- Fallback text flows after dots - hidden with CSS, visible without -->
+        <span class="typing-fallback"> Someone is typing</span>
+        
+      </div>
+      
+      <div class="typing-keyboard-box cg" aria-hidden="true">
+        <span class="typing-keyboard-icon-css cg">&nbsp;</span>
+      </div>
+      
+    </div>
+  </div>
+
+  <!-- TYPING INDICATOR (IMAGE VERSION)  -->
+  <div class="typing-indicator" role="status" aria-label="Typing">
+    <div class="typing-inner">
+      <div class="typing-ellipsis-box cg">
+        
+        <p aria-hidden="true"><img class="typing-ellipsis-img cg" src="https://images.squidge.org/images/2025/12/14/ellipsis_animation.png" alt="ellipsis animation"></p>
+        <span class="typing-fallback">... Someone is typing</span>
+        
+      </div>
+      
+      <div class="typing-keyboard-box cg" aria-hidden="true">
+        <p><img class="typing-keyboard-img cg" src="https://images.squidge.org/images/2025/12/01/chatkeyboard.png" alt="keyboard image"></p>
+      </div>
+      
+    </div>
+  </div>
+
+  <!-- RECEIVED INDICATOR (CSS VERSION)  -->
+  <div class="typing-indicator" role="status" aria-label="Typing">
+    <div class="typing-inner">
+      <div class="typing-ellipsis-box cg"></div>
+      
+      <div class="typing-keyboard-box received cg" aria-hidden="true">
+        <span class="typing-keyboard-icon-css received cg">&nbsp;</span>
+      </div>
+      
+    </div>
+  </div>
+
+  <!-- RECEIVED INDICATOR (IMAGE VERSION)  -->
+  <div class="typing-indicator" role="status" aria-label="Typing">
+    <div class="typing-inner">
+      <div class="typing-ellipsis-box cg"></div>
+      
+      <div class="typing-keyboard-box received cg" aria-hidden="true">
+        <p><img class="typing-keyboard-img received cg" src="https://images.squidge.org/images/2025/12/01/chatkeyboard.png" alt="keyboard image"></p>
+      </div>
+      
+    </div>
+  </div>
+
+</div>
+
+</div>
+</br> <!-- break to have a divider between them -->
+
+
+<!-- ==========================================
+     LUNA-TERRA / MEMORIAL FOUNDATION (.mf)
+     ========================================== -->
+
+<div class="hwbm-chat mf">
+
+<!-- Background image (sticky, doesn't scroll) -->
+<div class="hwbm-bg">
+  <p><img src="https://images.squidge.org/images/2025/11/24/luna-terra_bg.png" alt="Background image of stars"></p>
+</div>
+
+<!-- Profile cards section -->
+<div class="profiles-stacked">
+
+  <!-- RIGHT PROFILE: Luna-Terra -->
+  <div class="profile-right-stacked mf">
+    <div class="profile-container">
+      <div class="profile-title right mf"><p>PILOT</p></div> </br> <!-- test -->
+      <div class="profile-name mf"><p>LUNA-TERRA</p></div> </br> <!-- test -->
+      <div class="profile-name solo mf"><p>LUNA-TERRA</p></div> </br> <!-- test -->
+      
+      <div class="profile-title right mf"><p>PILOT</p></div>
+      <div class="profile-name mf"><p>LUNA-TERRA</p></div>
+      <div class="profile-spacer"></div>
+      <div class="profile-image-wrapper mf">
+        <p><img src="https://static.wikia.nocookie.net/hwbm/images/2/21/LunaTerraIcon.png" alt="Luna-Terra Icon" class="profile-image mf"></p>
+        <p><img src="https://static.wikia.nocookie.net/hwbm/images/4/42/SaturnIcon.png" alt="Saturn Icon" class="profile-image mf cm-to-mf"></p>
+        <p><img src="https://static.wikia.nocookie.net/hwbm/images/e/e3/PlutoIcon.png" alt="Pluto Icon" class="profile-image mf cg-to-mf"></p>
+      </div>
+      <div class="profile-bio mf"><p>Pilot First Class. Don't send me messages.</p></div>
+      
+      <!-- Console: scrollable terminal-style text -->
+      <div class="profile-console">
+        <div class="console-header mf">
+          <p><span class="console-title">CONSOLE</span><span class="console-line"> </span></p>
+        </div>
+        
+        <div class="console-body mf">
+          <p>...pilot vital readings fluctuating</p>
+          <p>...potential gravity well: automatic reroute plotted</p>
+          <p>...beginning component re-enumeration</p>
+          <p>...spurious disconnect of component id [0x3242:0x4212:RIGHT AMMO POD]</p>
+          <p>...Pthread support ABORTS when sync kernel primitives misused</p>
+          <p>...coffee maker process: completed (exit status: 0)</p>
+          <p>...subspace NTP jitter corrected (delta: -118ns)</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- LEFT PROFILE: Europa -->
+  <div class="profile-left-stacked mf">
+    <div class="profile-container">
+      <div class="profile-title mf"><p>COMMAND</p></div>
+      <div class="profile-name mf"><p>EUROPA</p></div>
+      <div class="profile-spacer"></div>
+      <div class="profile-image-wrapper mf">
+        <p><img src="https://static.wikia.nocookie.net/hwbm/images/9/9f/EuropaIcon.png" alt="Europa Icon" class="profile-image mf"></p>
+      </div>
+      <div class="profile-bio mf"><p>Director of Combat Operations, Memorial Foundation Existential Safety. Not your mom.</p></div>
+    </div>
+  </div>
+
+  <!-- LEFT PROFILE: Europa, channel closed version  -->
+  <div class="profile-left-stacked closed mf">
+    <div class="profile-container">
+      <div class="profile-title mf"><p>COMMAND</p></div>
+      <div class="profile-name mf"><p>EUROPA</p></div>
+      <div class="profile-spacer"></div>
+      <div class="profile-image-wrapper mf">
+        <p><img src="https://static.wikia.nocookie.net/hwbm/images/9/9f/EuropaIcon.png" alt="Europa Icon" class="profile-image mf"></p>
+      </div>
+      <div class="profile-bio mf"><p>Director of Combat Operations, Memorial Foundation Existential Safety. Not your mom.</p></div>
+    </div>
+  </div>
+
+</div>
+
+<!-- Chat messages container -->
+<div class="chat-container">
+
+  <dl class="message right mf">
+    <dt>Luna-Terra</dt>
+    <dd>Test message from Luna-Terra</dd>
+  </dl>
+
+  <dl class="message left mf">
+    <dt>Europa</dt>
+    <dd>Test message from Europa</dd>
+  </dl>
+
+  <dl class="message right mf">
+    <dt>Luna-Terra</dt>
+    <dd>A longer test message from Luna-Terra, to make sure it handles longer message rectangles correctly.</dd>
+  </dl>
+
+  <dl class="message left mf">
+    <dt>Europa</dt>
+    <dd>And a longer test message from Europa, going a few lines to make sure we can test chat scrolling behavior.</dd>
+  </dl>
+
+  <dl class="message right mf">
+    <dt>Luna-Terra</dt>
+    <dd>Another message to add more scrollable content.</dd>
+  </dl>
+
+  <dl class="message left mf">
+    <dt>Europa</dt>
+    <dd>Indeed, let's make sure there's enough to scroll.</dd>
+  </dl>
+
+  <dl class="message right mf">
+    <dt>Luna-Terra</dt>
+    <dd>One more for good measure.</dd>
+  </dl>
+  
+  <!-- CHANNEL CLOSED -->
+  <dl class="message closed mf">
+    <dt>System</dt>
+    <dd>Channel Closed</dd>
+  </dl>
+
+  <!-- TYPING INDICATOR (CSS VERSION)  -->
+  <div class="typing-indicator" role="status" aria-label="Typing">
+    <div class="typing-inner">
+      <div class="typing-ellipsis-box mf">
+        
+        <div class="typing-ellipsis-css" aria-hidden="true">
+          <!-- Dots as spans, no whitespace between them so they form "..." without CSS -->
+          <span class="typing-dot d1 mf">.</span><span class="typing-dot d2 mf">.</span><span class="typing-dot d3 mf">.</span>
+        </div>
+        <!-- Fallback text flows after dots - hidden with CSS, visible without -->
+        <span class="typing-fallback"> Someone is typing</span>
+        
+      </div>
+      
+      <div class="typing-keyboard-box mf" aria-hidden="true">
+        <span class="typing-keyboard-icon-css mf">&nbsp;</span>
+      </div>
+      
+    </div>
+  </div>
+
+  <!-- TYPING INDICATOR (IMAGE VERSION)  -->
+  <div class="typing-indicator" role="status" aria-label="Typing">
+    <div class="typing-inner">
+      <div class="typing-ellipsis-box mf">
+        
+        <p aria-hidden="true"><img class="typing-ellipsis-img mf" src="https://images.squidge.org/images/2025/12/14/ellipsis_animation.png" alt="ellipsis animation"></p>
+        <span class="typing-fallback">... Someone is typing</span>
+        
+      </div>
+      
+      <div class="typing-keyboard-box mf" aria-hidden="true">
+        <p><img class="typing-keyboard-img mf" src="https://images.squidge.org/images/2025/12/01/chatkeyboard.png" alt="keyboard image"></p>
+      </div>
+      
+    </div>
+  </div>
+
+  <!-- RECEIVED INDICATOR (CSS VERSION)  -->
+  <div class="typing-indicator" role="status" aria-label="Typing">
+    <div class="typing-inner">
+      <div class="typing-ellipsis-box mf"></div>
+      
+      <div class="typing-keyboard-box received mf" aria-hidden="true">
+        <span class="typing-keyboard-icon-css received mf">&nbsp;</span>
+      </div>
+      
+    </div>
+  </div>
+
+  <!-- RECEIVED INDICATOR (IMAGE VERSION)  -->
+  <div class="typing-indicator" role="status" aria-label="Typing">
+    <div class="typing-inner">
+      <div class="typing-ellipsis-box mf"></div>
+      
+      <div class="typing-keyboard-box received mf" aria-hidden="true">
+        <p><img class="typing-keyboard-img received mf" src="https://images.squidge.org/images/2025/12/01/chatkeyboard.png" alt="keyboard image"></p>
+      </div>
+      
+    </div>
+  </div>
+
+</div>
+
+</div>
+
+
+</div>
+</body>
+</html>
