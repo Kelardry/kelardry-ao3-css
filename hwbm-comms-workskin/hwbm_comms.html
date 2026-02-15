@@ -3,23 +3,22 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>HWBM Chat Skin - Combined Palettes</title>
+  <title>HWBM Comms Skin - Combined Palettes</title>
   <style>
 /* ==========================================
-   HWBM CHAT SKIN - Combined Palettes
+   HWBM COMMS SKIN - Combined Palettes
    
-   Palette classes: .cm (Saturn/Celestial Mechanics),
-   .cg (Pluto/Cradle's Graces), .mf (Luna-Terra/Memorial Foundation)
+   Palette classes: .cm (Saturn/Celestial Mechanics), .cg (Pluto/Cradle's Graces), .mf (Luna-Terra/Memorial Foundation)
    
    Apply palette classes directly to elements, not just the container.
-   This allows mixing palettes (e.g., an MF message in a CM chat).
+   This allows mixing palettes (e.g., an MF message in a CM comms).
    ========================================== */
 
 /* ==========================================
-   MAIN CHAT CONTAINER
+   MAIN COMMS CONTAINER
    ========================================== */
 
-#workskin .hwbm-chat {
+#workskin .hwbm-comms {
   height: 90vh;
   max-width: 40em;
   margin: 0 auto;
@@ -33,19 +32,19 @@
 }
 
 /* --- Palette-specific container backgrounds --- */
-#workskin .hwbm-chat.cm { background: linear-gradient(to bottom, #7b818a 70%, #91949c); }
-#workskin .hwbm-chat.cg { background: linear-gradient(to bottom, #650a12 70%, #421e2b 200%); }
-#workskin .hwbm-chat.mf { background: linear-gradient(to bottom, #25101d 70%, #352527 150%); }
+#workskin .hwbm-comms.cm { background: linear-gradient(to bottom, #7b818a 70%, #91949c); }
+#workskin .hwbm-comms.cg { background: linear-gradient(to bottom, #650a12 70%, #421e2b 200%); }
+#workskin .hwbm-comms.mf { background: linear-gradient(to bottom, #25101d 70%, #352527 150%); }
 
 /* --- Scrollbar (Webkit Only) --- */
-#workskin .hwbm-chat::-webkit-scrollbar { width: 1em; }
-#workskin .hwbm-chat::-webkit-scrollbar-track { background: transparent; }
-#workskin .hwbm-chat::-webkit-scrollbar-button { width: 0; height: 0; display: none; }
+#workskin .hwbm-comms::-webkit-scrollbar { width: 1em; }
+#workskin .hwbm-comms::-webkit-scrollbar-track { background: transparent; }
+#workskin .hwbm-comms::-webkit-scrollbar-button { width: 0; height: 0; display: none; }
 
 /* Palette-specific scrollbar thumb */
-#workskin .hwbm-chat.cm::-webkit-scrollbar-thumb { background-color: #EAE6E1; border: none; }
-#workskin .hwbm-chat.cg::-webkit-scrollbar-thumb { background-color: #FFFFFF; border: none; }
-#workskin .hwbm-chat.mf::-webkit-scrollbar-thumb { background-color: #FFFAE6; border: none; }
+#workskin .hwbm-comms.cm::-webkit-scrollbar-thumb { background-color: #EAE6E1; border: none; }
+#workskin .hwbm-comms.cg::-webkit-scrollbar-thumb { background-color: #FFFFFF; border: none; }
+#workskin .hwbm-comms.mf::-webkit-scrollbar-thumb { background-color: #FFFAE6; border: none; }
 
 /* ==========================================
    BACKGROUND IMAGE (Sticky)
@@ -417,10 +416,10 @@
 }
 
 /* ==========================================
-   CHAT MESSAGES
+   COMMS MESSAGES
    ========================================== */
 
-#workskin .chat-container {
+#workskin .comms-container {
   clear: both;
   padding: 3.5em 0 1.5em 0;
   position: relative;
@@ -791,7 +790,7 @@
      SATURN / CELESTIAL MECHANICS (.cm)
      ========================================== -->
 
-<div class="hwbm-chat cm">
+<div class="hwbm-comms cm">
 
 <!-- Background image (sticky, doesn't scroll) -->
 <div class="hwbm-bg">
@@ -865,8 +864,8 @@
 
 </div>
 
-<!-- Chat messages container -->
-<div class="chat-container">
+<!-- Comms messages container -->
+<div class="comms-container">
 
   <dl class="message right cm">
     <dt>Saturn</dt>
@@ -885,7 +884,7 @@
 
   <dl class="message left cm">
     <dt>Mercury</dt>
-    <dd>And a longer test message from Mercury, going a few lines to make sure we can test chat scrolling behavior.</dd>
+    <dd>And a longer test message from Mercury, going a few lines to make sure we can test comms scrolling behavior.</dd>
   </dl>
 
   <dl class="message right cm">
@@ -981,7 +980,7 @@
      PLUTO / CRADLE'S GRACES (.cg)
      ========================================== -->
 
-<div class="hwbm-chat cg">
+<div class="hwbm-comms cg">
 
 <!-- Background image (sticky, doesn't scroll) -->
 <div class="hwbm-bg">
@@ -1055,8 +1054,8 @@
 
 </div>
 
-<!-- Chat messages container -->
-<div class="chat-container">
+<!-- Comms messages container -->
+<div class="comms-container">
 
   <dl class="message right cg">
     <dt>Pluto</dt>
@@ -1075,7 +1074,7 @@
 
   <dl class="message left cg">
     <dt>Mars</dt>
-    <dd>And a longer test message from Mars, going a few lines to make sure we can test chat scrolling behavior.</dd>
+    <dd>And a longer test message from Mars, going a few lines to make sure we can test comms scrolling behavior.</dd>
   </dl>
 
   <dl class="message right cg">
@@ -1171,7 +1170,7 @@
      LUNA-TERRA / MEMORIAL FOUNDATION (.mf)
      ========================================== -->
 
-<div class="hwbm-chat mf">
+<div class="hwbm-comms mf">
 
 <!-- Background image (sticky, doesn't scroll) -->
 <div class="hwbm-bg">
@@ -1245,8 +1244,8 @@
 
 </div>
 
-<!-- Chat messages container -->
-<div class="chat-container">
+<!-- Comms messages container -->
+<div class="comms-container">
 
   <dl class="message right mf">
     <dt>Luna-Terra</dt>
@@ -1265,7 +1264,7 @@
 
   <dl class="message left mf">
     <dt>Europa</dt>
-    <dd>And a longer test message from Europa, going a few lines to make sure we can test chat scrolling behavior.</dd>
+    <dd>And a longer test message from Europa, going a few lines to make sure we can test comms scrolling behavior.</dd>
   </dl>
 
   <dl class="message right mf">
