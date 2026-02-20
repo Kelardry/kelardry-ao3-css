@@ -1,0 +1,979 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HWBM Mail Skin</title>
+  <style>
+/* ==========================================
+   HWBM MAIL SKIN
+   
+   Palette classes: 
+   .cm (Saturn/Celestial Mechanics)
+   .cg (Pluto/Cradle's Graces)
+   .mf (Luna-Terra/Memorial Foundation)
+   ========================================== */
+
+/* ==========================================
+   OVERRIDE AO3 DEFAULT LIMITS
+   ========================================== */
+
+#workskin {
+  width: 95vw !important;
+  max-width: 100vw !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* ==========================================
+   OUTER WRAPPER WITH STICKY BACKGROUND IMAGE
+   ========================================== */
+
+#workskin .hwbm-mail-wrapper {
+  height: 90vh;
+  width: 95vw;
+  max-width: 100vw;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  position: relative;
+  box-sizing: border-box;
+}
+
+#workskin .hwbm-mail-bg {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  height: 90vh;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  z-index: 0;
+}
+
+#workskin .hwbm-mail-bg p {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  line-height: 0;
+}
+
+#workskin .hwbm-mail-bg img {
+  min-width: 100%;
+  min-height: 100%;
+  max-width: none;
+  max-height: none;
+  width: auto;
+  height: auto;
+  margin: 0;
+  padding: 0;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+/* ==========================================
+   SCROLLABLE CONTAINER (overlays background)
+   ========================================== */
+
+#workskin .hwbm-mail-scroll {
+  position: relative;
+  width: 100%;
+  margin-top: -90vh;
+  z-index: 1;
+  box-sizing: border-box;
+}
+
+/* ==========================================
+   MAIN MAIL CONTAINER (centered, flexible width, scrollable)
+   ========================================== */
+
+#workskin .hwbm-mail-container {
+  position: absolute;
+  right: 16%;
+  left: 20%;
+  padding: 0 2.5em;
+  font-family: Roboto, Futura, 'Trebuchet MS', Arial, sans-serif;
+  line-height: 1.5;
+  box-sizing: border-box;
+  overflow-y: auto;
+  overflow-x: hidden;
+  height: 90vh;
+}
+
+/* ==========================================
+   PALETTE-SPECIFIC CONTAINER BACKGROUNDS
+   ========================================== */
+
+#workskin .hwbm-mail-container.cm {
+  background-color: #333E50;
+  height: 87vh; /*make shorter to make room for scuzz strip*/
+}
+
+#workskin .hwbm-mail-container.cg {
+  background-color: rgba(74, 19, 37, 0.67);
+}
+
+#workskin .hwbm-mail-container.mf {
+  background-color: rgba(25, 11, 19, 0.502);
+}
+
+/* ==========================================
+   SCROLLBAR STYLING (Webkit)
+   ========================================== */
+
+#workskin .hwbm-mail-container::-webkit-scrollbar {
+  width: 1em;
+}
+
+#workskin .hwbm-mail-container::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+#workskin .hwbm-mail-container::-webkit-scrollbar-button {
+  width: 0;
+  height: 0;
+  display: none;
+}
+
+#workskin .hwbm-mail-container.cm::-webkit-scrollbar-thumb {
+  background-color: #EAE6E1;
+  border: none;
+}
+
+#workskin .hwbm-mail-container.cg::-webkit-scrollbar-thumb {
+  background-color: #FFFFFF;
+  border: none;
+}
+
+#workskin .hwbm-mail-container.mf::-webkit-scrollbar-thumb {
+  background-color: #FFFAE6;
+  border: none;
+}
+
+/* ==========================================
+   FACTION-SPECIFIC OVERLAYS
+   ========================================== */
+
+/* --- CM Yellow Background Right Side --- */
+#workskin .hwbm-yellow-bg {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 79.8vw;
+  right: 0;
+  background-color: #E2E817;
+  z-index: 0;
+}
+
+/* --- CM  Bottom Strip --- */
+#workskin .hwbm-cm-scuzz {
+  position: absolute;
+  right: 16%;
+  left: 20%;
+  padding: 0;
+  box-sizing: border-box;
+  height: 3vh;
+  background-color: #333E50;
+  z-index: 2;
+  bottom: 0em;
+  margin-bottom: 0em;
+  clear: both;
+}
+
+#workskin .hwbm-cm-scuzz p {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  line-height: 0;
+}
+
+#workskin .hwbm-cm-scuzz img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  filter: brightness(0) saturate(100%) invert(98%) sepia(59%) saturate(136%) hue-rotate(307deg) brightness(95%) contrast(92%);
+}
+
+/* --- CM Glitch Upper Left --- */
+#workskin .hwbm-cm-glitch-upper {
+  position: absolute;
+  top: 0;
+  left: 2vw;
+  z-index: 0;
+}
+
+#workskin .hwbm-cm-glitch-upper p {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  line-height: 0;
+}
+
+#workskin .hwbm-cm-glitch-upper img {
+  width: 100%;
+  height: auto;
+  display: block;
+  max-height: 30vh;
+  min-height: 30vh;
+  filter: brightness(0) saturate(100%) invert(98%) sepia(59%) saturate(136%) hue-rotate(307deg) brightness(95%) contrast(92%);
+}
+
+/* --- CM Glitch Middle Left (slightly overlapping mail container) --- */
+#workskin .hwbm-cm-glitch-middle {
+  position: absolute;
+  top: 25vh;
+  right: 74.4vw; /*keep generally barely overlapping left edge of text*/
+  z-index: 2;
+}
+
+#workskin .hwbm-cm-glitch-middle p {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  line-height: 0;
+}
+
+#workskin .hwbm-cm-glitch-middle img {
+  height: auto;
+  display: block;
+  max-height: 30vh;
+  min-height: 30vh;
+  width: auto;
+  flex-shrink: 0;
+  justify-content: flex-end;
+  filter: brightness(0) saturate(100%) invert(98%) sepia(59%) saturate(136%) hue-rotate(307deg) brightness(95%) contrast(92%);
+}
+
+/* --- CG Red Top Bar --- */
+#workskin .hwbm-cg-topbar {
+  position: sticky;
+  top: 0;
+  left: 1.5em;
+  right: 0;
+  height: 3em;
+  background-color: #FF2232;
+  z-index: 3;
+}
+
+#workskin .hwbm-cg-topbar-icon {
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 3em;
+  z-index: 4;
+}
+
+#workskin .hwbm-cg-topbar-icon p {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  line-height: 0;
+}
+
+#workskin .hwbm-cg-topbar-icon img {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* --- CG Dark Purple Overlay Right Side --- */
+#workskin .hwbm-cg-purple-right {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 79.8vw;
+  right: 0;
+  background-color: rgba(51, 15, 51, 0.7);
+  z-index: 0;
+}
+
+/* --- CG Teal Bit Overlay --- */
+#workskin .hwbm-cg-bit {
+  position: absolute;
+  left: 73.5vw; /*have top stars overlap a little text*/
+  right: 0;
+  z-index: 3;
+  height: 100%;
+  box-sizing: border-box;
+  bottom: 0;
+  margin-bottom: 0;
+  clear: both;
+  padding: 0;
+  display: flex;
+  align-items: center; /* center image vertically */
+}
+
+#workskin .hwbm-cg-bit p {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  line-height: 0;
+}
+
+#workskin .hwbm-cg-bit img {
+  width: 100%;
+  max-height: 100%;
+  max-width: 100%;
+  display: block;
+  vertical-align: middle;
+  filter: brightness(0) saturate(100%) invert(77%) sepia(22%) saturate(1379%) hue-rotate(111deg) brightness(103%) contrast(95%);
+}
+
+/* --- MF Blot Left --- */
+#workskin .hwbm-mf-blot-left {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 90vh;
+  width: 95vw;
+  max-width: 100vw;
+  z-index: 0;
+}
+
+#workskin .hwbm-mf-blot-left p {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  line-height: 0;
+}
+
+#workskin .hwbm-mf-blot-left img {
+  width: 100%;
+  height: 90vh;
+  min-width: 95vw;
+  display: block;
+  filter: brightness(0) saturate(100%) invert(50%) sepia(43%) saturate(572%) hue-rotate(147deg) brightness(86%) contrast(90%);
+  opacity: 0.15;
+}
+
+
+/* --- MF Blot Right --- */
+#workskin .hwbm-mf-blot-right {
+  position: absolute;
+  display: inline-block;
+  vertical-align: middle;
+  height: 90vh;
+  width: 95vw;
+  max-width: 100vw;
+  margin: 0;
+  padding: 0;
+  z-index: 1; /*over mail and scrollbar. Cannot on Ao3 get it to replace mail scroll container background color.*/
+}
+
+#workskin .hwbm-mf-blot-right p {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  line-height: 0;
+}
+
+#workskin .hwbm-mf-blot-right img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  filter: brightness(0) saturate(100%) invert(50%) sepia(43%) saturate(572%) hue-rotate(147deg) brightness(86%) contrast(90%);
+  opacity: 0.15;
+}
+
+/* ==========================================
+   INNER CONTENT WRAPPER (for padding)
+   ========================================== */
+
+#workskin .hwbm-mail-content-wrapper {
+  padding: 1.5em 0;
+  position: relative;
+  z-index: 2;
+}
+
+/* ==========================================
+   MAIL ITEM (details/summary structure)
+   ========================================== */
+
+#workskin .hwbm-mail {
+  margin-bottom: 0em;
+  box-sizing: border-box;
+}
+
+#workskin .hwbm-mail summary {
+  min-height: 6.875em;
+  padding: 0.7em 0.3125em 0 0;
+  cursor: pointer;
+  list-style: none;
+  box-sizing: border-box;
+  position: relative;
+  /* Add huge transition delay to remember the opacity change */
+  transition: opacity 0s 2147483647s; /*~68 years*/
+}
+
+/* Remove default details marker/arrow */
+#workskin .hwbm-mail summary::-webkit-details-marker {
+  display: none;
+}
+
+#workskin .hwbm-mail summary::marker {
+  display: none;
+}
+
+/* Rule for summary to stay 60% opaque after it's been opened and closed */
+#workskin .hwbm-mail summary:active {
+  opacity: 0.6;
+  /* Immediate transition when clicked */
+  transition: opacity 0s;
+}
+
+/* ==========================================
+   MAIL SUBJECT LINE
+   ========================================== */
+
+#workskin .hwbm-mail-subject {
+  font-size: 1.25em;
+  font-weight: bold;
+  display: block;
+  margin: 0 0 0 0;
+  padding: 0;
+}
+
+/* ==========================================
+   MAIL METADATA (Origin/Author - in summary)
+   ========================================== */
+
+#workskin .hwbm-mail-meta {
+  font-size: 1em;
+  display: block;
+  margin: 0;
+  padding: 0 0 0 1em;
+  line-height: 1.3;
+}
+
+/* ==========================================
+   PALETTE-SPECIFIC TEXT COLORS (from game)
+   ========================================== */
+
+#workskin .hwbm-mail.cm .hwbm-mail-subject {
+  color: #EAE6E1;
+}
+
+#workskin .hwbm-mail.cm .hwbm-mail-meta {
+  color: #EAE6E1;
+}
+
+#workskin .hwbm-mail.cm .hwbm-mail-content {
+  color: #EAE6E1;
+}
+
+#workskin .hwbm-mail.cg .hwbm-mail-subject {
+  color: #FFFFFF;
+}
+
+#workskin .hwbm-mail.cg .hwbm-mail-meta {
+  color: #FFFFFF;
+}
+
+#workskin .hwbm-mail.cg .hwbm-mail-content {
+  color: #FFFFFF;
+}
+
+#workskin .hwbm-mail.mf .hwbm-mail-subject {
+  color: #FFFAE6;
+}
+
+#workskin .hwbm-mail.mf .hwbm-mail-meta {
+  color: #FFFAE6;
+}
+
+#workskin .hwbm-mail.mf .hwbm-mail-content {
+  color: #FFFAE6;
+}
+
+/* ==========================================
+   MAIL CONTENT (expanded state)
+   ========================================== */
+
+#workskin .hwbm-mail-content {
+  font-size: 1em;
+  padding: 0em 0.3125em 1em 1.0125em;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+#workskin .hwbm-mail-content p {
+  margin: 0 0 0.8em 0;
+}
+
+#workskin .hwbm-mail-content p:last-child {
+  margin-bottom: 0;
+}
+
+/* Bold labels in content */
+#workskin .hwbm-mail-content b {
+  font-weight: bold;
+}
+
+#workskin .hwbm-mail-content strong {
+  font-weight: bold;
+}
+
+#workskin .hwbm-mail-meta b {
+  font-weight: bold;
+}
+
+#workskin .hwbm-mail-meta strong {
+  font-weight: bold;
+}
+
+/* ==========================================
+   MAIL SEPARATOR
+   ========================================== */
+
+#workskin .hwbm-mail-separator {
+  height: 0.1786em;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+#workskin .hwbm-mail-separator.cm {
+  background-color: #EAE6E1;
+}
+
+#workskin .hwbm-mail-separator.cg {
+  background-color: #FFFFFF;
+}
+
+#workskin .hwbm-mail-separator.mf {
+  background-color: #FFFAE6;
+}
+
+/* ==========================================
+   OPACITY FOR RE-CLOSED, AND RE-OPENING STATES
+   ========================================== */
+
+#workskin .hwbm-mail[open] summary {
+  opacity: 1;
+  /* Cancel any transition - apply immediately */
+  transition: none;
+}
+
+/* Apply reduced opacity when clicking to CLOSE (while still open) */
+#workskin .hwbm-mail[open] summary:active {
+  opacity: 0.6;
+  /* Immediate transition */
+  transition: none;
+}
+  </style>
+</head>
+<body>
+
+<div id="workskin">
+
+  <!-- ==========================================
+       CELESTIAL MECHANICS (SATURN) PALETTE
+       ========================================== -->
+
+<br><br><br><br><br><br><br>
+  
+  <div class="hwbm-mail-wrapper">
+    <div class="hwbm-mail-bg">
+      <p><img src="https://images.squidge.org/images/2025/11/24/saturn_bg.png" alt="Saturn's background image of stars"></p>
+    </div>
+
+    <div class="hwbm-mail-scroll">
+      
+      <!-- Upper left glitch -->
+      <div class="hwbm-cm-glitch-upper">
+        <img src="https://images.squidge.org/images/2026/02/08/Saturn_MailAlerts_glitch1_eae6e1.png" alt="glitchy numbers and letters scattered behind and to the left of Saturn's mail screen">
+      </div>
+      
+      <!-- Middle left glitch (slightly overlapping mail container) -->
+      <div class="hwbm-cm-glitch-middle">
+        <img src="https://images.squidge.org/images/2026/02/08/Saturn_MailAlerts_glitch2_eae6e1.png" alt="glitchy squiggle on top of and to the left of Saturn's mail screen">
+      </div>
+      
+      <div class="hwbm-mail-container cm">
+        
+        <div class="hwbm-mail-content-wrapper">
+          
+          <!-- Spacer at top -->
+          <br><br><br><br><br>
+          
+          <!-- Top separator bar -->
+          <div class="hwbm-mail-separator cm"></div>
+
+          <!-- Mail 1: Conflict I -->
+          <details class="hwbm-mail cm">
+            <summary>
+              <span class="hwbm-mail-subject"><b>SUBJECT</b>: Conflict I</span>
+              <span class="hwbm-mail-meta"><b>ORIGIN</b>: Leaked Data Packet<br>
+              <b>AUTHOR</b>: Halimede</span>
+            </summary>
+            <div class="hwbm-mail-content">
+              <p>You can't believe all this started over how the first child in space was going to be born?</p>
+              
+              <p>Of course it's a big deal. Making human life in space is a huge decision. Everyone has to be involved. Everyone needs to agree. It means the future. It's true it wasn't the only reason, in it were all other reasons. How long were we going to stay here. Did space have a future at all. What would the child be like. How would we raise the child.</p>
+              
+              <p>The founders of the Memorial Foundation Space program asked these questions a lot. That's why they tried to raise us so that we would be able to create a world that they wanted for earth.</p>
+              
+              <p>That's why we need to return. Because they need us.</p>
+            </div>
+          </details>
+          <div class="hwbm-mail-separator cm"></div>
+
+          <!-- Mail 2: Loss Story III -->
+          <details class="hwbm-mail cm">
+            <summary>
+              <span class="hwbm-mail-subject"><b>SUBJECT</b>: Loss Story III</span>
+              <span class="hwbm-mail-meta"><b>ORIGIN</b>: Declassified Records Leak<br>
+              <b>AUTHOR</b>: Operations Commander Europa</span>
+            </summary>
+            <div class="hwbm-mail-content">
+              <p>I forget that you're just as clueless about these things as me sometimes.</p>
+              
+              <p>I didn't ask to be a mom either, you know.</p>
+              
+              <p>You do take to it better.</p>
+              
+              <p>Not when it comes to this. So come here and be the bad guy.</p>
+              
+              <p>She's my niece and she'll never listen to me. You have to do it.</p>
+              
+              <p>Fine. I'll do it. I can be the bad guy too, you know. But tell me what to do.</p>
+              
+              <p>I really wish I could be there to see it. What you should do is nothing.</p>
+              
+              <p>That's always your solution.</p>
+              
+              <p>I really mean it. Krun Macula is already under construction. It is probably the real reason she's angry; Pluto's already getting her own toy. If Hali really wants to compete, she should seize the head start she already has, one way or the other.</p>
+              
+              <p>That's great, but if she's too foolish and heartbroken to understand that, she's going to fall behind schedule!</p>
+              
+              <p>That's really her problem though, isn't it? When she understands, the shame of that wasted time will spur her on.</p>
+              
+              <p>You really are the bad mom.</p>
+              
+              <p>And you really are the good mom. Doesn't that make you happy?</p>
+            </div>
+          </details>
+          <div class="hwbm-mail-separator cm"></div>
+
+          <!-- Mail 3: Halimede III -->
+          <details class="hwbm-mail cm">
+            <summary>
+              <span class="hwbm-mail-subject"><b>SUBJECT</b>: Halimede III</span>
+              <span class="hwbm-mail-meta"><b>ORIGIN</b>: Memorial Foundation Space Academy Archives<br>
+              <b>AUTHOR</b>: Operations Commander Europa</span>
+            </summary>
+            <div class="hwbm-mail-content">
+              <p>Stop asking me about Pluto. She is a special case, and we have no idea why. You won't do her any better to compare the two, which is not something you should be doing at all in any case anyway. It helps neither of them.</p>
+            </div>
+          </details>
+          <div class="hwbm-mail-separator cm"></div>
+
+          <!-- Mail 4: TRUCE ENDING EFFECTIVE IMMEDIATELY, canon example -->
+          <details class="hwbm-mail cm">
+            <summary>
+              <span class="hwbm-mail-subject">SUBJECT: TRUCE ENDING EFFECTIVE IMMEDIATELY</span>
+              <span class="hwbm-mail-meta"><b>ORIGIN</b>: Native Sphere Mass Communication<br>
+              <b>AUTHOR</b>: Memorial Foundation Existential Safety</span>
+            </summary>
+            <div class="hwbm-mail-content">
+              <p>To all members of the former Memorial Foundation Native Sphere Existential Research Division, now known as Celestial Mechanics, this message serves as a formal acknowledgement that this branch has violated our trust and broken the provisions of the 1981 Memorial Foundation Consensus by violating clause 3, the development of a variable gravity engine, and clause 7, installation of a variable gravity engine into the Ship-Self String of Pearls.</p>
+              <p>Celestial Mechanics will no longer be listed as part of Memorial Foundation. They will be formally re-listed as an independent entity and considered a true Existential Threat by Memorial Foundation Native Sphere Existential Safety. We are still offering forgiveness, so please defect as soon as possible while the appeal grace period is still in effect. Please otherwise expect tidal retaliation for existential endangerment of human Culture.</p>
+              <p>—Halimede, Princess, Memorial Foundation Native Sphere Existential Safety</p>
+            </div>
+          </details>
+          <div class="hwbm-mail-separator cm"></div>
+          
+          <!-- Spacer at bottom -->
+          <br><br><br><br><br>
+          
+        </div>
+      
+      </div>
+    
+    </div>
+    
+    
+    <!-- Yellow background on right side -->
+    <div class="hwbm-yellow-bg"></div>
+    
+    <!-- Bottom scuzz strip -->
+    <div class="hwbm-cm-scuzz">
+      <img src="https://images.squidge.org/images/2026/02/08/Saturn_thickscuzz1_eae6e1.png" alt="glitchy thick scuzz of blocky static at the bottom of Saturn's mail screen">
+    </div>
+    
+  </div>
+
+  <!-- ==========================================
+       CRADLE'S GRACES (PLUTO) PALETTE
+       ========================================== -->
+
+<br><br><br><br><br><br><br>
+  
+  <div class="hwbm-mail-wrapper">
+    <div class="hwbm-mail-bg">
+      <p><img src="https://images.squidge.org/images/2026/02/16/pluto_Mail_glare_Lightened_bg.png" alt="Pluto's background image of stars"></p> /*add glare-lightened version later*/
+    </div>
+
+    <div class="hwbm-mail-scroll">
+      
+      <div class="hwbm-mail-container cg">
+        
+        <!-- Top red bar with icon -->
+        <div class="hwbm-cg-topbar">
+          <div class="hwbm-cg-topbar-icon">
+            <img src="https://images.squidge.org/images/2026/02/08/pluto_Mail_topedge_onlyright.png" alt="A bar on the right of Pluto's mails has four horizontal lines on one end, like a menu">
+          </div>
+        </div>
+        
+        <div class="hwbm-mail-content-wrapper">
+          
+          <!-- Spacer at top -->
+          <br><br><br><br><br>
+          
+          <!-- Top separator bar -->
+          <div class="hwbm-mail-separator cg"></div>
+
+          <!-- Mail 1: Conflict I -->
+          <details class="hwbm-mail cg">
+            <summary>
+              <span class="hwbm-mail-subject"><b>SUBJECT</b>: Conflict I</span>
+              <span class="hwbm-mail-meta"><b>ORIGIN</b>: Leaked Data Packet<br>
+              <b>AUTHOR</b>: Halimede</span>
+            </summary>
+            <div class="hwbm-mail-content">
+              <p>You can't believe all this started over how the first child in space was going to be born?</p>
+              
+              <p>Of course it's a big deal. Making human life in space is a huge decision. Everyone has to be involved. Everyone needs to agree. It means the future. It's true it wasn't the only reason, in it were all other reasons. How long were we going to stay here. Did space have a future at all. What would the child be like. How would we raise the child.</p>
+              
+              <p>The founders of the Memorial Foundation Space program asked these questions a lot. That's why they tried to raise us so that we would be able to create a world that they wanted for earth.</p>
+              
+              <p>That's why we need to return. Because they need us.</p>
+            </div>
+          </details>
+          <div class="hwbm-mail-separator cg"></div>
+
+          <!-- Mail 2: Loss Story III -->
+          <details class="hwbm-mail cg">
+            <summary>
+              <span class="hwbm-mail-subject"><b>SUBJECT</b>: Loss Story III</span>
+              <span class="hwbm-mail-meta"><b>ORIGIN</b>: Declassified Records Leak<br>
+              <b>AUTHOR</b>: Operations Commander Europa</span>
+            </summary>
+            <div class="hwbm-mail-content">
+              <p>I forget that you're just as clueless about these things as me sometimes.</p>
+              
+              <p>I didn't ask to be a mom either, you know.</p>
+              
+              <p>You do take to it better.</p>
+              
+              <p>Not when it comes to this. So come here and be the bad guy.</p>
+              
+              <p>She's my niece and she'll never listen to me. You have to do it.</p>
+              
+              <p>Fine. I'll do it. I can be the bad guy too, you know. But tell me what to do.</p>
+              
+              <p>I really wish I could be there to see it. What you should do is nothing.</p>
+              
+              <p>That's always your solution.</p>
+              
+              <p>I really mean it. Krun Macula is already under construction. It is probably the real reason she's angry; Pluto's already getting her own toy. If Hali really wants to compete, she should seize the head start she already has, one way or the other.</p>
+              
+              <p>That's great, but if she's too foolish and heartbroken to understand that, she's going to fall behind schedule!</p>
+              
+              <p>That's really her problem though, isn't it? When she understands, the shame of that wasted time will spur her on.</p>
+              
+              <p>You really are the bad mom.</p>
+              
+              <p>And you really are the good mom. Doesn't that make you happy?</p>
+            </div>
+          </details>
+          <div class="hwbm-mail-separator cg"></div>
+
+          <!-- Mail 3: Halimede III -->
+          <details class="hwbm-mail cg">
+            <summary>
+              <span class="hwbm-mail-subject"><b>SUBJECT</b>: Halimede III</span>
+              <span class="hwbm-mail-meta"><b>ORIGIN</b>: Memorial Foundation Space Academy Archives<br>
+              <b>AUTHOR</b>: Operations Commander Europa</span>
+            </summary>
+            <div class="hwbm-mail-content">
+              <p>Stop asking me about Pluto. She is a special case, and we have no idea why. You won't do her any better to compare the two, which is not something you should be doing at all in any case anyway. It helps neither of them.</p>
+            </div>
+          </details>
+          <div class="hwbm-mail-separator cg"></div>
+
+          <!-- Mail 4: Unacceptable, canon example -->
+          <details class="hwbm-mail cg">
+            <summary>
+              <span class="hwbm-mail-subject">SUBJECT: Unacceptable</span>
+              <span class="hwbm-mail-meta"><b>ORIGIN</b>: Cradle’s Graces Formation Archives<br>
+              <b>AUTHOR</b>: Executive Director Dr. Nix</span>
+            </summary>
+            <div class="hwbm-mail-content">
+              <p>The funding is being cut again. They aren’t getting the results they want. They think it’s indulgent. They don’t care about how the kids feel. It warms their hearts to see them grow unimpeded by the gravity of Earth, but also it disturbs them. They love our beautiful free glittering children, but when we talk about bringing Earth’s children here, they look away.</p>
+              <p>The children of space are not bound by the same laws of gravity, and do as they like with their bodies and souls. You have insisted that they can endure the gravitational forces of Earth, but have you considered that their tidal forces do not wish to accommodate them? They will be smoothed back again, or broken—at the very least, they will never stop trying to destroy them. We have created magnificent, delicate creatures, and Earth wants them back for what? To crush them again under their own Tidal forces?</p>
+            </div>
+          </details>
+          <div class="hwbm-mail-separator cg"></div>
+          
+          <!-- Spacer at bottom -->
+          <br><br><br><br><br>
+          
+        </div>
+      </div>
+    </div>
+    
+    <!-- Purple/dark overlay on right -->
+    <div class="hwbm-cg-purple-right"></div>
+    
+    <!-- Bit overlay -->
+    <div class="hwbm-cg-bit">
+      <img src="https://images.squidge.org/images/2026/02/08/pluto_Mail_bit1_21f9d0.png" alt="A box to the right of Pluto's mail, which says 'auth [PKM-CG]' at the top, contains some dots like stars, boxes, bars, and lines, and says 'CGM-23b' near the bottom">
+    </div>
+    
+  </div>
+
+  <!-- ==========================================
+       MEMORIAL FOUNDATION (LUNA-TERRA) PALETTE
+       ========================================== -->
+
+<br><br><br><br><br><br><br>
+  
+  <div class="hwbm-mail-wrapper">
+    <div class="hwbm-mail-bg">
+      <p><img src="https://images.squidge.org/images/2025/11/24/luna-terra_bg.png" alt="Luna-Terra's background image of stars"></p>
+    </div>
+
+    <div class="hwbm-mail-scroll">
+      <!-- Blot overlays sized to match background -->
+      <div class="hwbm-mf-blot-left">
+        <img src="https://images.squidge.org/images/2026/02/08/luna-terra_Mail_blot1_3888a0_15opacity.png" alt="A blot to the left of Luna-Terra's mail, like a small chip in the screen">
+      </div>
+      
+      <div class="hwbm-mf-blot-right">
+        <img src="https://images.squidge.org/images/2026/02/08/luna-terra_Mail_blot2_3888a0_15opacity.png" alt="A blot to the right of Luna-Terra's mail, like a large crack down the side of the screen">
+      </div>
+      
+      <div class="hwbm-mail-container mf">
+        <div class="hwbm-mail-content-wrapper">
+          
+          <!-- Spacer at top -->
+          <br><br><br><br><br>
+          
+          <!-- Top separator bar -->
+          <div class="hwbm-mail-separator mf"></div>
+
+          <!-- Mail 1: Conflict I -->
+          <details class="hwbm-mail mf">
+            <summary>
+              <span class="hwbm-mail-subject"><b>SUBJECT</b>: Conflict I</span>
+              <span class="hwbm-mail-meta"><b>ORIGIN</b>: Leaked Data Packet<br>
+              <b>AUTHOR</b>: Halimede</span>
+            </summary>
+            <div class="hwbm-mail-content">
+              <p>You can't believe all this started over how the first child in space was going to be born?</p>
+              
+              <p>Of course it's a big deal. Making human life in space is a huge decision. Everyone has to be involved. Everyone needs to agree. It means the future. It's true it wasn't the only reason, in it were all other reasons. How long were we going to stay here. Did space have a future at all. What would the child be like. How would we raise the child.</p>
+              
+              <p>The founders of the Memorial Foundation Space program asked these questions a lot. That's why they tried to raise us so that we would be able to create a world that they wanted for earth.</p>
+              
+              <p>That's why we need to return. Because they need us.</p>
+            </div>
+          </details>
+          <div class="hwbm-mail-separator mf"></div>
+
+          <!-- Mail 2: Loss Story III -->
+          <details class="hwbm-mail mf">
+            <summary>
+              <span class="hwbm-mail-subject"><b>SUBJECT</b>: Loss Story III</span>
+              <span class="hwbm-mail-meta"><b>ORIGIN</b>: Declassified Records Leak<br>
+              <b>AUTHOR</b>: Operations Commander Europa</span>
+            </summary>
+            <div class="hwbm-mail-content">
+              <p>I forget that you're just as clueless about these things as me sometimes.</p>
+              
+              <p>I didn't ask to be a mom either, you know.</p>
+              
+              <p>You do take to it better.</p>
+              
+              <p>Not when it comes to this. So come here and be the bad guy.</p>
+              
+              <p>She's my niece and she'll never listen to me. You have to do it.</p>
+              
+              <p>Fine. I'll do it. I can be the bad guy too, you know. But tell me what to do.</p>
+              
+              <p>I really wish I could be there to see it. What you should do is nothing.</p>
+              
+              <p>That's always your solution.</p>
+              
+              <p>I really mean it. Krun Macula is already under construction. It is probably the real reason she's angry; Pluto's already getting her own toy. If Hali really wants to compete, she should seize the head start she already has, one way or the other.</p>
+              
+              <p>That's great, but if she's too foolish and heartbroken to understand that, she's going to fall behind schedule!</p>
+              
+              <p>That's really her problem though, isn't it? When she understands, the shame of that wasted time will spur her on.</p>
+              
+              <p>You really are the bad mom.</p>
+              
+              <p>And you really are the good mom. Doesn't that make you happy?</p>
+            </div>
+          </details>
+          <div class="hwbm-mail-separator mf"></div>
+
+          <!-- Mail 3: Halimede III -->
+          <details class="hwbm-mail mf">
+            <summary>
+              <span class="hwbm-mail-subject"><b>SUBJECT</b>: Halimede III</span>
+              <span class="hwbm-mail-meta"><b>ORIGIN</b>: Memorial Foundation Space Academy Archives<br>
+              <b>AUTHOR</b>: Operations Commander Europa</span>
+            </summary>
+            <div class="hwbm-mail-content">
+              <p>Stop asking me about Pluto. She is a special case, and we have no idea why. You won't do her any better to compare the two, which is not something you should be doing at all in any case anyway. It helps neither of them.</p>
+            </div>
+          </details>
+          <div class="hwbm-mail-separator mf"></div>
+
+          <!-- Mail 4: Cold War Ace Reports [Luna-Terra], canon example -->
+          <details class="hwbm-mail mf">
+            <summary>
+              <span class="hwbm-mail-subject">SUBJECT: Cold War Ace Reports [Luna-Terra]</span>
+              <span class="hwbm-mail-meta"><b>ORIGIN</b>: 1st generation pilot research declassification<br>
+              <b>AUTHOR</b>: Memorial Foundation Existential Safety</span>
+            </summary>
+            <div class="hwbm-mail-content">
+              <p>She was unremarkable. I did not remember her at first. We took any of those who wanted badly to live in space and did not fit on Earth. In retrospect, we were asking for a rather unique quality, and it is not just a coincidence that she was there. The pilots had to be young adults, pass a physical, and not care what space might do to their body.</p>
+              <p>It is not so surprising that someone like her would emerge from that pool of people, but the woman you know today has been iterated on since she was an adolescent. Be assured, I saw nothing of promise in her when I first met her. I told her that myself, as I told all the students: I am uninterested in your potential. We are judged by the self we create. I find that encourages brats to not take their specialness so seriously.</p>
+              <p>That was not Luna-Terra’s problem. Piece by piece, she created someone very interesting to be. We gave those children permission, and Luna-Terra was simply unique in her execution. She was never encouraged. She was never punished. We will never find another prodigy like Luna-Terra by looking for "tidally-sensitive" children, because they do not exist. We will not find them pre-made. They must create themselves.</p>
+              <p>Was this not the dream of the Memorial Foundation Space Program?</p>
+            </div>
+          </details>
+          <div class="hwbm-mail-separator mf"></div>
+          
+          <!-- Spacer at bottom -->
+          <br><br><br><br><br>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+<br><br><br><br><br><br><br>
+</body>
+</html>
