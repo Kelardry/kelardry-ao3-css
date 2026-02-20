@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HWBM Terminal Skin</title>
+  <style>
+/* ==========================================
+   HWBM TERMINAL SKIN
+   
+   Palette classes: 
+   .cm (Saturn/Celestial Mechanics)
+   .cg (Pluto/Cradle's Graces)
+   .mf (Luna-Terra/Memorial Foundation)
+   ========================================== */
+
+/* ==========================================
+   OVERRIDE AO3 DEFAULT LIMITS
+   ========================================== */
+
+#workskin {
+  width: 95vw !important;
+  max-width: 100vw !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* ==========================================
+   OUTER WRAPPER WITH STICKY BACKGROUND IMAGE
+   ========================================== */
+
+#workskin .hwbm-terminal-wrapper {
+  height: 90vh;
+  width: 95vw;
+  max-width: 100vw;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  position: relative;
+  box-sizing: border-box;
+}
+
+#workskin .hwbm-terminal-bg {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  height: 90vh;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  z-index: 0;
+}
+
+#workskin .hwbm-terminal-bg p {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  line-height: 0;
+}
+
+#workskin .hwbm-terminal-bg img {
+  min-width: 100%;
+  min-height: 100%;
+  max-width: none;
+  max-height: none;
+  width: auto;
+  height: auto;
+  margin: 0;
+  padding: 0;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+/* ==========================================
+   SCROLLABLE TERMINAL CONTAINER
+   ========================================== */
+
+#workskin .hwbm-terminal-scroll {
+  position: relative;
+  width: 100%;
+  margin-top: -85vh;
+  z-index: 1;
+  box-sizing: border-box;
+}
+
+#workskin .hwbm-terminal-container {
+  position: absolute;
+  right: 10%;
+  left: 10%;
+  top: 5%;
+  padding: 1.5em 2em;
+  font-family: 'Source Code Pro', 'Courier New', Consolas, monospace;
+  line-height: 1;
+  box-sizing: border-box;
+  overflow-y: auto;
+  overflow-x: hidden;
+  height: 80vh;
+  max-height: 80vh;
+}
+
+/* ==========================================
+   PALETTE-SPECIFIC CONTAINER BACKGROUNDS
+   ========================================== */
+
+#workskin .hwbm-terminal-container.cm {
+  background-color: #333E50;
+  box-shadow: 0 -0.4em 0 0 #EAE6E1;
+  /*scrollbar-color: #EAE6E1 transparent;/* /*for firefox*/
+  /*^ Note: looking better on firefox desktop is mutually incompatible with looking good in Chrome*/
+}
+
+#workskin .hwbm-terminal-container.cg {
+  background-color: #3A172F;
+  box-shadow: 0 -0.4em 0 0 #FF2232;
+  /*scrollbar-color: #FF2232 transparent;*/
+}
+
+#workskin .hwbm-terminal-container.mf {
+  background-color: rgba(25, 11, 19, 0.85);
+  box-shadow: 0 -0.4em 0 0 #FFFBE6;
+  /*scrollbar-color: #FFFBE6 transparent;*/
+}
+
+/* ==========================================
+   SCROLLBAR STYLING (Webkit)
+   ========================================== */
+
+#workskin .hwbm-terminal-container::-webkit-scrollbar {
+  width: 0.75em;
+}
+
+#workskin .hwbm-terminal-container::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+#workskin .hwbm-terminal-container::-webkit-scrollbar-button {
+  width: 0;
+  height: 0;
+  display: none;
+}
+
+#workskin .hwbm-terminal-container.cm::-webkit-scrollbar-thumb {
+  background-color: #EAE6E1;
+  border: none;
+}
+
+#workskin .hwbm-terminal-container.cg::-webkit-scrollbar-thumb {
+  background-color: #FF2232;
+  border: none;
+}
+
+#workskin .hwbm-terminal-container.mf::-webkit-scrollbar-thumb {
+  background-color: #FFFBE6;
+  border: none;
+}
+
+/* ==========================================
+   TERMINAL MESSAGE (SYSTEM/BOOT TEXT)
+   ========================================== */
+
+#workskin .hwbm-terminal-msg {
+  padding-top: 0.25em;
+  padding-bottom: 0.25em;
+  padding-left: 0.625em;
+  padding-right: 0;
+  margin: 0;
+  font-family: 'Source Code Pro', 'Courier New', Consolas, monospace;
+  font-size: 1em;
+  text-align: left;
+  line-height: 1;
+  box-sizing: border-box;
+}
+
+/* Terminal message colors by faction */
+#workskin .hwbm-terminal-msg.mf {
+  color: #FFFBE6;
+}
+
+#workskin .hwbm-terminal-msg.cg {
+  color: #FF2232;
+}
+
+#workskin .hwbm-terminal-msg.cm {
+  color: #EAE6E1;
+}
+
+/* ==========================================
+   SENT MESSAGE (FROM PROTAGONIST)
+   ========================================== */
+
+#workskin .hwbm-terminal-sent {
+  padding-top: 0.25em;
+  padding-bottom: 0.25em;
+  padding-left: 0.2em;
+  padding-right: 0;
+  margin: 0.35em 0 0.35em 0;
+  font-family: Futura, 'Trebuchet MS', Arial, sans-serif;
+  font-weight: bold;
+  font-size: 1em;
+  text-align: left;
+  line-height: 1;
+  box-sizing: border-box;
+  position: relative;
+}
+
+/* Sent message text colors (dark) */
+#workskin .hwbm-terminal-container.mf .hwbm-terminal-sent {
+  color: #190B13;
+  background-color: #FFFBE6;
+}
+
+#workskin .hwbm-terminal-container.cg .hwbm-terminal-sent {
+  color: #3A172F;
+  background-color: #FF2232;
+}
+
+#workskin .hwbm-terminal-container.cm .hwbm-terminal-sent {
+  color: #333E50;
+  background-color: #EAE6E1;
+}
+
+/* ==========================================
+   RECEIVED MESSAGE (FROM OTHER CHARACTERS)
+   ========================================== */
+
+#workskin .hwbm-terminal-received {
+  padding-top: 0.25em;
+  padding-bottom: 0.25em;
+  padding-left: 0.2em;
+  padding-right: 0;
+  margin: 0.35em 0 0.35em 0;
+  font-family: Futura, 'Trebuchet MS', Arial, sans-serif;
+  font-weight: bold;
+  font-size: 1em;
+  text-align: left;
+  line-height: 1;
+  box-sizing: border-box;
+  position: relative;
+}
+
+/* Received message text colors (primary) */
+#workskin .hwbm-terminal-received.mf {
+  color: #FFFBE6;
+}
+
+#workskin .hwbm-terminal-received.cg {
+  color: #FF2232;
+}
+
+#workskin .hwbm-terminal-received.cm {
+  color: #EAE6E1;
+}
+
+/* ==========================================
+   VERTICAL BAR FOR RECEIVED MESSAGES
+   ========================================== */
+
+#workskin .hwbm-terminal-received::before {
+  content: '';
+  position: absolute;
+  left: -0.45em;
+  top: 0;
+  bottom: 0;
+  width: 0.4em;
+  display: block;
+}
+
+/* Vertical bar colors (matches text) */
+#workskin .hwbm-terminal-received.mf::before {
+  background-color: #FFFBE6;
+}
+
+#workskin .hwbm-terminal-received.cg::before {
+  background-color: #FF2232;
+}
+
+#workskin .hwbm-terminal-received.cm::before {
+  background-color: #EAE6E1;
+}
+
+  </style>
+</head>
+<body>
+
+<div id="workskin">
+
+<br><br><br><br><br><br><br>
+
+<!-- ==========================================
+     CELESTIAL MECHANICS (SATURN) EXAMPLE
+     ========================================== -->
+
+<div class="hwbm-terminal-wrapper">
+  <div class="hwbm-terminal-bg">
+    <p><img src="https://images.squidge.org/images/2025/11/24/saturn_bg.png" alt="Saturn's background image of stars"></p>
+  </div>
+
+  <div class="hwbm-terminal-scroll">
+    <div class="hwbm-terminal-container cm">
+      
+      <p class="hwbm-terminal-msg cm">Welcome, Provisional Test Pilot Saturn. Your Clearance Is Level 1: testing and maintenance </p>
+      
+      <p class="hwbm-terminal-msg cm">WARNING: potential damage to cockpit hardware detected</p>
+      
+      <p class="hwbm-terminal-msg cm">WARNING: modifying or tampering with cockpit hardware and/or firmware is strictly prohibited</p>
+      
+      <p class="hwbm-terminal-received cm">Mercury: Saturn what are you doing.</p>
+      
+      <p class="hwbm-terminal-msg cm">NOTICE: bypass override accepted</p>
+      
+      <p class="hwbm-terminal-msg cm">NOTICE: launch attempt blocked: no handshake with base </p>
+      
+      <p class="hwbm-terminal-sent cm">Saturn: oh hey mercury</p>
+      
+      <p class="hwbm-terminal-sent cm">Saturn: not much</p>
+      
+      <p class="hwbm-terminal-msg cm">WARNING: launch attempt blocked: base handshake spoof detected</p>
+      
+      <p class="hwbm-terminal-sent cm">Saturn: just hacking the OS root of this Ship-Self</p>
+      
+      <p class="hwbm-terminal-sent cm">Saturn: u?</p>
+      
+      <p class="hwbm-terminal-msg cm">NOTICE: base handshake 224%@)(!1$2(!$@FF!( </p>
+      
+      <p class="hwbm-terminal-msg cm">NOTICE: base handshake accepted</p>
+      
+      <p class="hwbm-terminal-received cm">Mercury: TRYING TO STOP SOME BRAT FROM HIJACKING THE PROTOTYPE, APPARENTLY</p>
+      
+      <p class="hwbm-terminal-msg cm">NOTICE: emergency launch override initiated: prepare for launch in T-minus 120 seconds</p>
+      
+      <p class="hwbm-terminal-sent cm">Saturn: calm down mercury im JUST borrowing it</p>
+      
+      <p class="hwbm-terminal-received cm">Mercury: I am NOT debating, I am trying to SAVE YOUR LIFE. The commander WILL be furious and he won’t just accept you STEALING the cornerstone project from the designated pilot!</p>
+      
+      <p class="hwbm-terminal-sent cm">Saturn: it's not a big deal, ill have it back before you know it </p>
+      
+      <p class="hwbm-terminal-received cm">Mercury: This is privileged information but the designated pilot has to launch right this second to get that machine back to Earth before they get here! This is the worst possible time! It couldn't be worse if you planned it!</p>
+      
+      <p class="hwbm-terminal-received cm">Mercury: Everyone in the system suddenly somehow knows this base's location, and they're heading here NOW.  </p>
+      
+      <p class="hwbm-terminal-msg cm">NOTICE: user launch override blocked: denied by base</p>
+      
+      <p class="hwbm-terminal-sent cm">Saturn: oh. wow. weird. how did that happen.</p>
+      
+      <p class="hwbm-terminal-msg cm">NOTICE: user launch override blocked: denied by base</p>
+      
+      <p class="hwbm-terminal-received cm">Mercury:...</p>
+      
+      <p class="hwbm-terminal-msg cm">NOTICE: user launch override blocked: denied by base</p>
+      
+      <p class="hwbm-terminal-received cm">Mercury:...YOU PLANNED IT DIDNT YOU </p>
+      
+      <p class="hwbm-terminal-sent cm">Saturn: you forgot an apostrophe</p>
+      
+      <p class="hwbm-terminal-msg cm">NOTICE: base override: remote shutdown in 30 seconds</p>
+      
+      <p class="hwbm-terminal-sent cm">Saturn: no one can prove anything, especially not the designated pilot unconscious in locker 27 </p>
+      
+      <p class="hwbm-terminal-sent cm">Saturn: whooooops looks like they're trying to kick me out huh</p>
+      
+      <p class="hwbm-terminal-received cm">Mercury: Saturn I KNOW you’re mad but you can’t do this when they catch you it’s going to be so bad can you just PLEASE act like you’re just pranking them there’s still time, I will beg them.</p>
+      
+      <p class="hwbm-terminal-sent cm">Saturn: oh such a worrywort, you've got hours to evacuate to the capital ship, theyll never engage you this far from base, and ill be distracting them</p>
+      
+      <p class="hwbm-terminal-sent cm">Saturn: i have it all figured out</p>
+      
+      <p class="hwbm-terminal-received cm">Mercury: Except for how you're going to do ANYTHING at ALL to accomplish that with everyone trying to KILL you.</p>
+      
+      <p class="hwbm-terminal-msg cm">NOTICE: base override: remote shutdown in 20 seconds</p>
+      
+      <p class="hwbm-terminal-received cm">Mercury: Saturn</p>
+      
+      <p class="hwbm-terminal-sent cm">Saturn: try to have a little faith</p>
+      
+    </div>
+  </div>
+</div>
+<br><br><br><br><br><br><br>
+<!-- ==========================================
+     CRADLE'S GRACES (PLUTO) EXAMPLE
+     ========================================== -->
+
+<div class="hwbm-terminal-wrapper">
+  <div class="hwbm-terminal-bg">
+    <p><img src="https://images.squidge.org/images/2025/11/24/pluto_bg.png" alt="Pluto's background image of stars"></p>
+  </div>
+
+  <div class="hwbm-terminal-scroll">
+    <div class="hwbm-terminal-container cg">
+      
+      <p class="hwbm-terminal-msg cg">by mapping the human connection and communication from Mercury (fixed point, distance that is itself, communication with oneself, thought and reason) to Pluto (unfixed, random point, existing at some intangible distance out of ourselves, communication with what is not, the unknown, the perception of impossible things) and every distance in-between. With perfect communication breath to breath. With perfect communication skin to skin. With perfect communication mouth to mouth, inside to inside, blood to blood. With perfect understanding across the bonds of culture. With perfect understanding across the boundaries of culture. With perfect access to the realization of the highest ideals. With perfect access to the acceptance of the deepest depths. The solar system maps the human body. The solar system maps culture. In the center is the sun, which is synthesis. When the physical bodies of the solar system become our home, our ship through the universe, our body, their names will be given again, from the name of a rock (such as Hades) to the name of a part of us and ourselves (such as Pluto).  You are the sun. Through you, humans will possess their true body. As you were once born, through us, we too, wish</p>
+      
+      <p class="hwbm-terminal-msg cg">BASE OVERRIDE—SYSTEM INTERRUPT</p>
+      
+      <p class="hwbm-terminal-received cg">Dr. Nix: Pluto.</p>
+      
+      <p class="hwbm-terminal-sent cg">Pluto: Hi, doctor.</p>
+      
+      <p class="hwbm-terminal-received cg">Dr. Nix: I lost you for a moment there. Are you okay?</p>
+      
+      <p class="hwbm-terminal-sent cg">Pluto: I'm fine, doctor.</p>
+      
+      <p class="hwbm-terminal-received cg">Dr. Nix: This is the first interface of its kind. If there is anything unusual about it... that will be hard to tell.</p>
+      
+      <p class="hwbm-terminal-received cg">Dr. Nix: Because by definition, it is very unusual.</p>
+      
+      <p class="hwbm-terminal-sent cg">Pluto: Haha. I'll let you know if it feels especially unusual, Nix.</p>
+      
+      <p class="hwbm-terminal-received cg">Dr. Nix: Good. Let me know if something categorically impossible happens.</p>
+      
+      <p class="hwbm-terminal-sent cg">Pluto: Like what?</p>
+      
+      <p class="hwbm-terminal-received cg">Dr. Nix: If your sync got so deep that your thoughts were being dumped into the OS code directly, for example.</p>
+      
+      <p class="hwbm-terminal-sent cg">Pluto: If that happens I'll let you know!!!</p>
+      
+      <p class="hwbm-terminal-received cg">Dr. Nix: Are you ready to begin?</p>
+      
+      <p class="hwbm-terminal-sent cg">Pluto: I've been ready for a long time.</p>
+      
+      <p class="hwbm-terminal-msg cg">Begin Activation Test</p>
+      
+      <p class="hwbm-terminal-msg cg">Macula Firmware Loading...</p>
+      
+      <p class="hwbm-terminal-msg cg">Dual Tidal Reactor Syncing...</p>
+      
+      <p class="hwbm-terminal-msg cg">Welcome To Cradle's Graces Bootloader 0Y0YC1 v.5.666.9123 [Oh Why Oh Why Can't I]</p>
+      
+      <p class="hwbm-terminal-msg cg">Bootlegging Gravitational Reactor……………………………………………………………done</p>
+      
+      <p class="hwbm-terminal-msg cg">Hyperdensity established…………done</p>
+      
+      <p class="hwbm-terminal-received cg">Dr. Nix: Beginning resonance test.</p>
+      
+      <p class="hwbm-terminal-received cg">Dr. Nix: You should feel lightheadedness and weight.</p>
+      
+      <p class="hwbm-terminal-received cg">Dr. Nix: Wait until you're comfortable before diving in.</p>
+      
+      <p class="hwbm-terminal-msg cg">Correct action. Correct thought. Correct belief. Existing without fault. Existing without ever harming the universe. To be the execution of what is right and good. The power over distance is also the power to harm. Harm by thinking. Harm by breathing. Harm by loving. Harm by touching. Harm by culture. Harm by boundaries. Harm by idealism. Harm by depression. Harm by infinity.</p>
+      
+      <p class="hwbm-terminal-msg cg">Let us talk of harm by infinity. If the ninth planet in the solar system is not a planet, it is because it represents the point at which humans cross over into that which they are not. A phenomenon that is itself existentially threatening, regardless of how or if that phenomenon manifests. That is the sea of possibility itself. All hopes and fears will</p>
+      
+      <p class="hwbm-terminal-received cg">Dr. Nix: Pluto? How is the response.</p>
+      
+      <p class="hwbm-terminal-sent cg">Pluto: I'm doing great! Nothing weird.</p>
+      
+    </div>
+  </div>
+</div>
+
+<br><br><br><br><br><br><br>
+
+<!-- ==========================================
+     MEMORIAL FOUNDATION (LUNA-TERRA) EXAMPLE
+     ========================================== -->
+
+<div class="hwbm-terminal-wrapper">
+  <div class="hwbm-terminal-bg">
+    <p><img src="https://images.squidge.org/images/2025/11/24/luna-terra_bg.png" alt="Luna-Terra's background image of stars"></p>
+  </div>
+
+  <div class="hwbm-terminal-scroll">
+    <div class="hwbm-terminal-container mf">
+      
+        <p class="hwbm-terminal-msg mf">From the Division of Existential Safety, Conflict-Enabled Ship-Self Archetype Model, First Flight July 16th, 1969, Place of Manufacture: Sea of Crises, Earth's Moon, Our Hope For a Throne Of The Soul, For The Memorial Foundation International Space Program and All Humanity:</p>
+        
+        <p class="hwbm-terminal-msg mf">"Until No One Is Forgotten, and All Are Remembered."</p>
+        
+        <p class="hwbm-terminal-msg mf">Registering Pilot...</p>
+        
+        <p class="hwbm-terminal-msg mf">Welcome, Pilot First Class Luna-Terra.</p>
+        
+        <p class="hwbm-terminal-msg mf">ERROR: Multiple Maintenance Issues and Critical Errors Detected</p>
+        
+        <p class="hwbm-terminal-msg mf">NOTICE: Launch permissions are locked until addressed.</p>
+        
+        <p class="hwbm-terminal-msg mf">>list errors</p>
+        
+        <p class="hwbm-terminal-msg mf">Maintenance errors:</p>
+        
+        <p class="hwbm-terminal-msg mf">There is a possible sensor failure.</p>
+        
+        <p class="hwbm-terminal-msg mf">Several limb connections are not registering.</p>
+        
+        <p class="hwbm-terminal-msg mf">No weapons are loaded.</p>
+        
+        <p class="hwbm-terminal-msg mf">CRITICAL ERRORS: </p>
+        
+        <p class="hwbm-terminal-msg mf">MASS ALERT 1: Healing failure on critical area near core. Possible bleed.</p>
+        
+        <p class="hwbm-terminal-msg mf">MASS ALERT 2: Tidal core is resonating at levels harmful to the pilot.</p>
+        
+        <p class="hwbm-terminal-msg mf">>ready manual firmware update</p>
+        
+        <p class="hwbm-terminal-msg mf">running...</p>
+        
+        <p class="hwbm-terminal-msg mf">Upgrades detected...</p>
+        
+        <p class="hwbm-terminal-msg mf">syncing...</p>
+        
+        <p class="hwbm-terminal-msg mf">accepted manual internal mechanism firmware update</p>
+        
+        <p class="hwbm-terminal-msg mf">switched ammunition to conceptual mode</p>
+        
+        <p class="hwbm-terminal-msg mf">custom sensors loaded</p>
+        
+        <p class="hwbm-terminal-msg mf">dynamic limb optimization loaded</p>
+        
+        <p class="hwbm-terminal-msg mf">1981.1.7_Weapon_Loadout drivers loaded.</p>
+        
+        <p class="hwbm-terminal-msg mf">>details MASS ALERT 1 </p>
+        
+        <p class="hwbm-terminal-msg mf">"I bleed too."</p>
+        
+        <p class="hwbm-terminal-msg mf">Recording derived from the data burned four-dimensionally into the wound</p>
+        
+        <p class="hwbm-terminal-msg mf">suffered by this unit almost one year ago.</p>
+        
+        <p class="hwbm-terminal-msg mf">Wound self-generated by forced overloading tearing the core open during sustained conflict in the Mars>Ares regression campaign. </p>
+        
+        <p class="hwbm-terminal-msg mf">All critical systems have naturally healed, yet the wound continues to bleed into space. Fuel efficiency lowered, healing speed reduced, and Tidal Reactor speed cannot be regulated, leading to possibility of overload and increased pilot strain.</p>
+        
+        <p class="hwbm-terminal-msg mf">It is strongly recommended that you seek the assistance of a full maintenance team. A lack of understanding of the full effects of gravitational conflict on the human gestalt means that this computer cannot provide adequate instruction on therapeutic measures.</p>
+        
+        <p class="hwbm-terminal-msg mf">>permanently disable MASS ALERT 1</p>
+        
+        <p class="hwbm-terminal-msg mf">Really ignore? </p>
+        
+        <p class="hwbm-terminal-msg mf">>Y</p>
+        
+        <p class="hwbm-terminal-msg mf">Provide reason</p>
+        
+        <p class="hwbm-terminal-msg mf">>I can handle it</p>
+        
+        <p class="hwbm-terminal-msg mf">Automatic scan alerts show that this may not be a very good reason. Would you like to provide another?</p>
+        
+        <p class="hwbm-terminal-msg mf">>no</p>
+        
+        <p class="hwbm-terminal-msg mf">MASS ALERT 1 Disabled</p>
+        
+        <p class="hwbm-terminal-msg mf">Ending text segment to demo other message types:</p>
+        
+        <p class="hwbm-terminal-received mf">Halimede: I knew you’d choose us in the end.</p>
+
+        <p class="hwbm-terminal-received mf">Halimede: Even if you didn’t choose me.</p>
+        
+        <p class="hwbm-terminal-received mf">Halimede: All that matters is that you’re coming home.</p>
+        
+        <p class="hwbm-terminal-sent mf">Luna-Terra: Hi, Hali.</p>
+        
+        <p class="hwbm-terminal-sent mf">Luna-Terra: Hello?</p>
+        
+        <p class="hwbm-terminal-received mf">Halimede: Im here I was just startled why are you replying</p>
+        
+        <p class="hwbm-terminal-sent mf">Luna-Terra: Since you keep messaging me, I thought you’d be less surprised.</p>
+        
+        <p class="hwbm-terminal-sent mf">Luna-Terra: Sorry about that.</p>
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+</body>
+</html>
