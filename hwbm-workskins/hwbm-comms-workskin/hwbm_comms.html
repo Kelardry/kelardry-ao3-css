@@ -611,7 +611,6 @@
   padding-top: 1.2em;
   padding-bottom: 1.2em;
   padding-left: 1.5em;
-  padding-right: 1.5em;
   flex-grow: 1;
   flex-shrink: 1;
   min-width: 0;
@@ -663,9 +662,9 @@
 }
 
 /* Individual dot styling 
-   Uses a <span> tag with "." text content hidden via text-indent
+   Uses a <span> tag with empty text content
    so AO3 doesn't collapse the element.
-   Without CSS, dots appear inline as "..."
+   Without CSS, dots do not appear at all
 */
 #workskin .typing-dot {
   display: block;
@@ -673,12 +672,11 @@
   height: 0.8em;
   margin-top: 0;
   margin-bottom: 0;
-  margin-left: 0.4em;
-  margin-right: 0.4em;
+  margin-left: 0.32em;
+  margin-right: 0.32em;
   padding: 0;
   border-radius: 50%;
   overflow: hidden;
-  text-indent: -9999px;
   opacity: 0.7;
   transition-property: opacity;
   transition-duration: 0.4s;
@@ -690,15 +688,15 @@
 #workskin .typing-dot.mf { background-color: #FFFAE6; }
 
 /* Staggered transition delays for wave effect */
-#workskin .typing-dot.d1 { transition-delay: 0s; }
-#workskin .typing-dot.d2 { transition-delay: 0.15s; }
-#workskin .typing-dot.d3 { transition-delay: 0.3s; }
+#workskin .typing-dot:nth-child(1) { transition-delay: 0s; }
+#workskin .typing-dot:nth-child(2) { transition-delay: 0.15s; }
+#workskin .typing-dot:nth-child(3) { transition-delay: 0.3s; }
 
 /* Hover state: dots fade out in sequence */
 #workskin .typing-indicator:hover .typing-dot { opacity: 0.35; }
-#workskin .typing-indicator:hover .typing-dot.d1 { transition-delay: 0s; }
-#workskin .typing-indicator:hover .typing-dot.d2 { transition-delay: 0.15s; }
-#workskin .typing-indicator:hover .typing-dot.d3 { transition-delay: 0.3s; }
+#workskin .typing-indicator:hover .typing-dot:nth-child(1) { transition-delay: 0s; }
+#workskin .typing-indicator:hover .typing-dot:nth-child(2) { transition-delay: 0.15s; }
+#workskin .typing-indicator:hover .typing-dot:nth-child(3) { transition-delay: 0.3s; }
 
 /* Keyboard icon: detailed keyboard made with background gradients
    Colored frame on transparent bg, box color shows as "keys"
@@ -749,6 +747,8 @@
   display: block;
   height: 1em;
   width: auto;
+  aspect-ratio: 146 / 34; /*keep original aspect ratio*/
+  object-fit: contain;
   margin: 0;
   padding: 0;
   border: none;
@@ -914,11 +914,11 @@
       <div class="typing-ellipsis-box cm">
         
         <div class="typing-ellipsis-css" aria-hidden="true">
-          <!-- Dots as spans, no whitespace between them so they form "..." without CSS -->
-          <span class="typing-dot d1 cm">.</span><span class="typing-dot d2 cm">.</span><span class="typing-dot d3 cm">.</span>
+          <!-- Dots as spans, no whitespace between them, no text needed-->
+          <span class="typing-dot cm"></span><span class="typing-dot cm"></span><span class="typing-dot cm"></span>
         </div>
-        <!-- Fallback text flows after dots - hidden with CSS, visible without -->
-        <span class="typing-fallback"> Someone is typing</span>
+        <!-- Fallback text flows after dots - hidden with CSS, visible without-->
+        <span class="typing-fallback">... Someone is typing</span>
         
       </div>
       
@@ -1104,11 +1104,11 @@
       <div class="typing-ellipsis-box cg">
         
         <div class="typing-ellipsis-css" aria-hidden="true">
-          <!-- Dots as spans, no whitespace between them so they form "..." without CSS -->
-          <span class="typing-dot d1 cg">.</span><span class="typing-dot d2 cg">.</span><span class="typing-dot d3 cg">.</span>
+          <!-- Dots as spans, no whitespace between them, no text needed-->
+          <span class="typing-dot cg"></span><span class="typing-dot cg"></span><span class="typing-dot cg"></span>
         </div>
-        <!-- Fallback text flows after dots - hidden with CSS, visible without -->
-        <span class="typing-fallback"> Someone is typing</span>
+        <!-- Fallback text flows after dots - hidden with CSS, visible without-->
+        <span class="typing-fallback">... Someone is typing</span>
         
       </div>
       
@@ -1294,11 +1294,11 @@
       <div class="typing-ellipsis-box mf">
         
         <div class="typing-ellipsis-css" aria-hidden="true">
-          <!-- Dots as spans, no whitespace between them so they form "..." without CSS -->
-          <span class="typing-dot d1 mf">.</span><span class="typing-dot d2 mf">.</span><span class="typing-dot d3 mf">.</span>
+          <!-- Dots as spans, no whitespace between them, no text needed-->
+          <span class="typing-dot mf"></span><span class="typing-dot mf"></span><span class="typing-dot mf"></span>
         </div>
-        <!-- Fallback text flows after dots - hidden with CSS, visible without -->
-        <span class="typing-fallback"> Someone is typing</span>
+        <!-- Fallback text flows after dots - hidden with CSS, visible without-->
+        <span class="typing-fallback">... Someone is typing</span>
         
       </div>
       
